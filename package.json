@@ -1,0 +1,18 @@
+{
+  "name": "gamestudios",
+  "version": "0.0.1",
+  "description": "A project that will give users the opportunity to see information about upcoming games",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hjörvar Ingi",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "sqlite3": "^5.0.2"
+  }
+}
