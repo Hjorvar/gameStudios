@@ -63,4 +63,38 @@ module.exports = class Worker {
       return true;
     });
 }
+  readStudios(){
+    const sql = 'SELECT id, name FROM studios ORDER BY name';
+    let studios = [];
+
+    const db = new sqlite3.Database(this.dbName, (err) => {
+      if (err) {
+        return console.error(colors.red(err.message));
+      }
+      console.log('Connected to the SQLite database'.green);
+      return true;
+    });
+
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        return console.log(colors.red(err.message));
+      }
+      console.log('Reading data from table'.green);
+      rows.forEach((row) => {
+        studios.push(row);
+      })
+      // colors.yellow(console.log(studios));
+      return true;
+    });
+
+    db.close((err) => {
+      if (err) {
+        return console.error(colors.red(err.message));
+      }
+      console.log('Close the database connection'.green);
+      return true;
+    });
+
+    return studios;
+  }
 }
