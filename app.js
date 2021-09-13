@@ -3,6 +3,7 @@ const path = require('path');
 require('colors');
 const frontPage = require('./routes/');
 const createStudio = require('./routes/createStudio');
+const ds = require('./routes/deleteStudio');
 const updateStudio = require('./routes/updateStudio');
 
 const app = express();
@@ -20,6 +21,7 @@ app.set('view engine', 'ejs');
 // routers
 app.use('/', frontPage);
 app.use('/createStudio', createStudio);
+app.use('/ds', ds);
 app.use('/updateStudio', updateStudio);
 
 

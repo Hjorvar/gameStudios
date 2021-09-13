@@ -9,12 +9,15 @@
 <body>
   <% if (action == 'create') { %>
     <form action="/createStudio" method="POST">
+      <label for="studioName">Name:</label><br>
+      <input type="text" id="studioName" name="studioName"><br>
   <% } else { %>
     <form action="/updateStudio" method="POST">
+      <label for="studioName">Name:</label><br>
+      <input type="text" id="studioName" name="studioName" value="<%= row.name %>"><br>
+      <input type="hidden" name="idStudio" value="<%= row.id %>">
   <% } %>
-    <label for="studioName">Name:</label><br>
-    <input type="text" id="studioName" name="studioName"><br>
-    <button type="submit"><%= action %></button>
+      <button type="submit"><%= action %></button>
   </form>
 </body>
 </html>

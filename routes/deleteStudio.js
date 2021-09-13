@@ -1,15 +1,17 @@
 const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
-const Worker = require('../db/Worker');
-const db = new Worker(path.join(__dirname, '../db/gameStudios.db'));
 
 const router = express.Router();
 
 // get studioTemplate page
 router.get('/', (req, res) => {
+  res.redirect(301, '/' );
+});
+
+router.post('/', (req, res) => {
   const dbFile = path.join(__dirname, '../db/gameStudios.db');
-  const sql = 'SELECT id, name FROM studios ORDER BY name';
+  const sql = 'DELETE FROM studios WHERE id = ?';
   let idStudio = req.body.idStudio;
 
   const db = new sqlite3.Database(dbFile, (err) => {
@@ -20,11 +22,11 @@ router.get('/', (req, res) => {
     return true;
   });
 
-  db.get(sql, [idStudio], (err, row) => {
+  db.run(sql, [idStudio], (err, row) => {
     if (err) {
       return console.error(err.message);
     }
-    res.render('createUpdate/studio', { title: 'Update', action: 'update', row });
+    res.redirect(301, '/' );
     return row
   });
 
@@ -35,11 +37,6 @@ router.get('/', (req, res) => {
     console.log('Close the database connection'.green);
     return true;
   });
-});
-
-router.post('/', (req, res) => {
-  db.updateStudio(1, req.body.studioName);
-  res.json(req.body);
 });
 
 module.exports = router;

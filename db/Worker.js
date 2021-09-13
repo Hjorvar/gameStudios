@@ -62,7 +62,8 @@ module.exports = class Worker {
       console.log('Close the database connection'.green);
       return true;
     });
-}
+  }
+  /*
   readStudios(){
     const sql = 'SELECT id, name FROM studios ORDER BY name';
     let studios = [];
@@ -97,4 +98,5 @@ module.exports = class Worker {
 
     return studios;
   }
+  */
 }
