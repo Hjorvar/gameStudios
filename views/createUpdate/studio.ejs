@@ -9,13 +9,25 @@
 <body>
   <% if (action == 'create') { %>
     <form action="/createStudio" method="POST">
-      <label for="studioName">Name:</label><br>
+      <label for="studioName">Name:</label>
       <input type="text" id="studioName" name="studioName"><br>
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city"><br/>
+      <label for="country">Country:</label>
+      <input type="text" name="country" id="country"><br/>
+      <label for="staffAmmount">Staff:</label>
+      <input type="text" name="staffAmmount" id="staffAmmount"><br/>
   <% } else { %>
     <form action="/updateStudio" method="POST">
-      <label for="studioName">Name:</label><br>
+      <label for="studioName">Name:</label>
       <input type="text" id="studioName" name="studioName" value="<%= row.name %>"><br>
       <input type="hidden" name="idStudio" value="<%= row.id %>">
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city" value="<%= row.city %>><br>
+      <label for="country">Country:</label>
+      <input type="text" name="country" id="country" value="<%= row.country %>><br>
+      <label for="staffAmmount">Staff:</label>
+      <input type="text" name="staffAmmount" id="staffAmmount" value="<%= row.staffAmmount %>><br>
   <% } %>
       <button type="submit"><%= action %></button>
   </form>
