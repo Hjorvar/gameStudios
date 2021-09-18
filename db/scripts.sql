@@ -3,7 +3,8 @@ CREATE TABLE studios (
   name TEXT NOT NULL UNIQUE,
   staffAmmount INT,
   city TEXT,
-  country TEXT
+  country TEXT,
+  founded INT
 );
 
 DROP TABLE studios;
