@@ -10,3 +10,9 @@ CREATE TABLE studios (
 DROP TABLE studios;
 
 SELECT * FROM studios;
+
+CREATE TABLE genres (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE
+);
+

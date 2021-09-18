@@ -3,8 +3,14 @@ const path = require('path');
 require('colors');
 const frontPage = require('./routes/');
 const createStudio = require('./routes/createStudio');
-const ds = require('./routes/deleteStudio');
 const updateStudio = require('./routes/updateStudio');
+const ds = require('./routes/deleteStudio');
+const createGenre = require('./routes/createGenre');
+const updateGenre = require('./routes/updateGenre');
+const deleteGenre = require('./routes/deleteGenre');
+const createGame = require('./routes/createGame');
+const updateGame = require('./routes/updateGame');
+const deleteGame = require('./routes/deleteGame');
 
 const app = express();
 
@@ -23,7 +29,12 @@ app.use('/', frontPage);
 app.use('/createStudio', createStudio);
 app.use('/ds', ds);
 app.use('/updateStudio', updateStudio);
-
+app.use('/createGenre', createGenre);
+app.use('/deleteGenre', deleteGenre);
+app.use('/updateGenre', updateGenre);
+app.use('/createGame', createGame);
+app.use('/deleteGame', deleteGame);
+app.use('/updateGame', updateGame);
 
 // errors : page not found
 app.use((req, res, next) => {
