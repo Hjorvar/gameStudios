@@ -9,7 +9,7 @@ const router = express.Router();
 
 // get index page
 router.get('/', (req, res) => {
-  const sql = 'SELECT id, name FROM studios ORDER BY name';
+  const sql = 'SELECT id, name, country, city, staffAmmount FROM studios ORDER BY name';
   let studios = [];
 
   const db = new sqlite3.Database(dbFile, (err) => {

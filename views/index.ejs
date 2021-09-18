@@ -8,11 +8,12 @@
 </head>
 <body>
   <table>
+    <thead><tr><th>Studio</th><th>Staff</th><th>City</th><th>Country</th><th>Update</th><th>Delete</th></tr></thead>
     <% for (let i = 0; i < studios.length; i += 1){ %>
       <tr><td><%= studios[i].name %> </td>
-      <tr><td><%= studios[i].staffAmmount %> </td>
-      <tr><td><%= studios[i].city %> </td>
-      <tr><td><%= studios[i].country %> </td>
+      <td><%= studios[i].staffAmmount %> </td>
+      <td><%= studios[i].city %> </td>
+      <td><%= studios[i].country %> </td>
       <td>
         <form action="/updateStudio" method="GET"><button type="submit">Update</button>
         <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
