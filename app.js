@@ -13,6 +13,8 @@ const updateGame = require('./routes/update/game');
 const deleteGame = require('./routes/delete/game');
 const readStudios = require('./routes/read/studios');
 const readGames = require('./routes/read/games');
+const readGame = require('./routes/read/game');
+
 
 
 
@@ -41,6 +43,8 @@ app.use('/deleteGame', deleteGame);
 app.use('/updateGame', updateGame);
 app.use('/studios', readStudios);
 app.use('/games', readGames);
+app.use('/game', readGame);
+
 
 
 // errors : page not found
