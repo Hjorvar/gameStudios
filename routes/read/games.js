@@ -9,7 +9,17 @@ const router = express.Router();
 
 // get index page
 router.get('/', (req, res) => {
-  const sql = 'SELECT games.id ,games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame INNER JOIN studios ON games.idStudio = studios.id INNER JOIN genres ON gameGenres.idGenre = genres.id GROUP BY games.id ORDER BY games.name;';
+  let where = 'WHERE 1 = 1';
+  console.log(req.query.idPlatform);
+  if(req.query.idPlatform == "Xbox"){
+    console.log('haha');
+    where = 'WHERE platforms.name = "Xbox Series" OR platforms.name = "Xbox One"';
+  }
+  if(req.query.idPlatform == "PS"){
+    where = 'WHERE platforms.name = "Playstation 5" or platforms.name = "Playstation 4"';
+  }
+
+  const sql = `SELECT games.id ,games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame INNER JOIN studios ON games.idStudio = studios.id INNER JOIN genres ON gameGenres.idGenre = genres.id INNER JOIN gamePlatforms ON games.id = gamePlatforms.idGame INNER JOIN platforms ON gamePlatforms.idPlatform = platforms.id ${where} GROUP BY games.id ORDER BY games.name;`;
   let games = [];
 
   const db = new sqlite3.Database(dbFile, (err) => {

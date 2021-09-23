@@ -10,10 +10,11 @@
   <link rel="stylesheet" type="text/css" href="/css/rootVariables.css"/>
 </head>
 <body>
+  <%- include('../include/navbar') %>
   <table class="customTable">
     <thead class="sticky"><tr><th>Name</th><th>Studio</th><th>Genre</th></tr></thead>
     <% for (let i = 0; i < games.length; i += 1){ %>
-			<tr onclick="window.location='/game?gameId=<%= games[i].id %>';">
+			<tr onclick="window.location='/game?idGame=<%= games[i].id %>';">
         <td><%= games[i].name %></td>
         <td><%= games[i].studioName %> </td>
         <td><%= games[i].genresName %> </td>

@@ -64,27 +64,28 @@ INSERT INTO publishers (name)
 VALUES ('Xbox Game Studios'), ('Bethesda Softworks'), ('Sony Interactive Entertainment');
 
 INSERT INTO gamePublishers
-VALUES (1,2),(2,1),(3,1),(4,1),(5,1),(6,2),(7,1);
+VALUES (8,3);
 
 INSERT INTO platforms (name)
 VALUES ('Xbox Series'), ('Playstation 4'), ('Switch'), ('Xbox One'), ('Playstation 5');
 
 INSERT INTO gamePlatforms
-VALUES (1,1), (2,1), (2,4), (3,1), (4,1), (4,4), (5,1), (5,4),(6,1),(7,1);
+VALUES (8, 2);
 
 INSERT INTO games 
 (name, estReleaseYear, idStudio, info, youtubeTrailer)
 VALUES
-("Fable", 2024, 16, 
-"Fable is a role-playing video game where players control their character from a third-person perspective. The main character, known as The Hero of Oakvale, can interact with people and objects as well as battle foes. The goal of Fable is to complete missions called quests that advance the game's plot, but Fable also features optional quests and allows players to pursue actions not directly tied to story completion.", 
-'<iframe width="560" height="315" src="https://www.youtube.com/embed/A4XgptlqDP4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+("God of War", 2018, 24, 
+"God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment (SIE). Released worldwide on April 20, 2018, for the PlayStation 4 (PS4), it is the eighth installment in the God of War series, the eighth chronologically, and the sequel to 2010's God of War III. Unlike previous games, which were loosely based on Greek mythology, this installment is loosely inspired by Norse mythology, with the majority of it set in ancient Scandinavia in the realm of Midgard. ", 
+'<iframe width="560" height="315" src="https://www.youtube.com/embed/K0u_kAWLJOA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
-
+INSERT INTO studios (name)
+VALUES ('Santa Monica Studio');
 
 INSERT INTO genres (name) VALUES ("Racing");
 
 INSERT INTO gameGenres (idGame, idGenre)
-VALUES (7, 	1), (7, 14);
+VALUES (8, 	12);
 
 DELETE FROM games WHERE id = 6;
 
@@ -92,3 +93,5 @@ SELECT *
 FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame
 INNER JOIN studios ON games.idStudio = studios.id
 ORDER BY games.name;
+
+SELECT games.id ,games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame INNER JOIN studios ON games.idStudio = studios.id INNER JOIN genres ON gameGenres.idGenre = genres.id WHERE 1 = 1 GROUP BY games.id  ORDER BY games.name;
