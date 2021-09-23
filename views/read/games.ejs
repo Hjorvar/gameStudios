@@ -13,7 +13,7 @@
   <table class="customTable">
     <thead class="sticky"><tr><th>Name</th><th>Studio</th><th>Genre</th></tr></thead>
     <% for (let i = 0; i < games.length; i += 1){ %>
-			<tr href="/game?gameId=<%= games[i].id %>"><td><%= games[i].name %></td>
+			<tr><td><a href="/game?gameId=<%= games[i].id %>"> <%= games[i].name %></a></td>
       <td><%= games[i].studioName %> </td>
       <td><%= games[i].genresName %> </td>
       <td>

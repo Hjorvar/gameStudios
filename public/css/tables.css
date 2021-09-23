@@ -37,3 +37,8 @@ table.customTable tr:nth-child(2n) td{
 table.customTable tr:hover:not(thead > tr){
     box-shadow:inset 0 0 0.15rem rgba(0, 0, 0, 0.5);
 }
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
