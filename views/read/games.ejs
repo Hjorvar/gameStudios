@@ -5,12 +5,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documengit t</title>
-  <link rel="stylesheet" type="text/css" href="/css/tables.css"/>
-  <link rel="stylesheet" type="text/css" href="/css/special.css"/>
-  <link rel="stylesheet" type="text/css" href="/css/rootVariables.css"/>
+  <% let rootpath = "../"; %>
+  <%- include(rootpath + 'include/stylesheets') %>
 </head>
 <body>
-  <%- include('../include/navbar') %>
+  <%- include(rootpath + 'include/navbar') %>
   <table class="customTable">
     <thead class="sticky"><tr><th>Name</th><th>Studio</th><th>Genre</th></tr></thead>
     <% for (let i = 0; i < games.length; i += 1){ %>
