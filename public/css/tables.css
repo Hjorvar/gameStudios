@@ -1,0 +1,39 @@
+table.customTable{
+    margin-top: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.005);
+}
+table.customTable thead{
+    top: 0;
+    z-index: 99;
+    background: #fff;
+    box-shadow: 0 0.15rem 0.15rem -0.15rem rgba(0, 0, 0, 0.5);
+}
+table.customTable th{
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-top: 0.5rem;
+    padding-bottom: 0.25rem;
+}
+table.customTable td{
+    margin: 0;
+    padding: .45rem .75rem;
+}
+
+table.customTable td:first-child{
+    padding-left: 0.25rem;
+}
+
+table.customTable td:last-child{
+    padding-right: 0.25rem;
+}
+
+table.customTable tr:nth-child(2n) td{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+table.customTable tr:hover:not(thead > tr){
+    box-shadow:inset 0 0 0.15rem rgba(0, 0, 0, 0.5);
+}

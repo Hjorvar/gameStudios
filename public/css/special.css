@@ -1,0 +1,16 @@
+/*This documents hold special styling that can be used in various different places*/
+.hide{
+    display: none;
+}
+.whiteout{
+    color: var(--bg_color);
+    user-select: none;
+}
+
+.sticky{
+    position: sticky;
+}
+
+.cur_default{
+    cursor: default;
+}
