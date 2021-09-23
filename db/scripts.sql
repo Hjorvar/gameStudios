@@ -29,9 +29,9 @@ CREATE TABLE games (
 INSERT INTO games 
 (name, estReleaseYear, idStudio, info, youtubeTrailer)
 VALUES
-("Grounded", 2022, 15, 
-"Grounded is a survival game developed by Obsidian Entertainment and published by Xbox Game Studios. It was released for Windows and Xbox One in early access on July 28, 2020, with the full release expected in 2021. An enhanced version for the Xbox Series X/S was released on November 10, 2020. In the game, players are shrunk to the size of an ant and attempt to survive in a backyard filled with dangers.", 
-'<iframe width="560" height="315" src="https://www.youtube.com/embed/S7XDCvpIqoo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+("Fable", 2024, 16, 
+"Fable is a role-playing video game where players control their character from a third-person perspective. The main character, known as The Hero of Oakvale, can interact with people and objects as well as battle foes. The goal of Fable is to complete missions called quests that advance the game's plot, but Fable also features optional quests and allows players to pursue actions not directly tied to story completion.", 
+'<iframe width="560" height="315" src="https://www.youtube.com/embed/A4XgptlqDP4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
 CREATE TABLE gameGenres (
 	idGame INTEGER,
@@ -44,7 +44,9 @@ CREATE TABLE gameGenres (
 INSERT INTO genres (name) VALUES ("Racing");
 
 INSERT INTO gameGenres (idGame, idGenre)
-VALUES (4, 	7);
+VALUES (7, 	1), (7, 14);
+
+DELETE FROM games WHERE id = 6;
 
 SELECT *
 FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame
