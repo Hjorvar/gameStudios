@@ -29,9 +29,10 @@ CREATE TABLE games (
 INSERT INTO games 
 (name, estReleaseYear, idStudio, info, youtubeTrailer)
 VALUES
-("Halo: Infinite", 2021, 1, 
-"Halo Infinite is an upcoming first-person shooter game developed by 343 Industries and published by Xbox Game Studios for Microsoft Windows, Xbox One, and Xbox Series X and Series S. The sixth main entry of the Halo series and the sixteenth Halo game overall, it continues the story of the Master Chief, following Halo 5: Guardians (2015). Unlike previous installments in the series, the multiplayer portion of the game will be free-to-play.", 
-'<iframe width="560" height="315" src="https://www.youtube.com/embed/W18OP8BZc6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+("Forza Horizon 5", 2021, 16, 
+"
+Forza Horizon 5 is an upcoming racing game developed by Playground Games and published by Xbox Game Studios. It will be the fifth Forza Horizon title and twelfth main instalment in the Forza series. The game is set in a fictionalised representation of Mexico. It is set to be released on 9 November 2021", 
+'<iframe width="560" height="315" src="https://www.youtube.com/embed/FYH9n37B7Yw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
 CREATE TABLE gameGenres (
 	idGame INTEGER,
@@ -41,10 +42,10 @@ CREATE TABLE gameGenres (
 	FOREIGN KEY (idGenre) REFERENCES genres(id)
 );
 
-INSERT INTO genres (name) VALUES ("First-person");
+INSERT INTO genres (name) VALUES ("Racing");
 
 INSERT INTO gameGenres (idGame, idGenre)
-VALUES (2, 	13), (2, 3);
+VALUES (4, 	15);
 
 SELECT *
 FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame
