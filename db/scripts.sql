@@ -29,10 +29,9 @@ CREATE TABLE games (
 INSERT INTO games 
 (name, estReleaseYear, idStudio, info, youtubeTrailer)
 VALUES
-("Forza Horizon 5", 2021, 16, 
-"
-Forza Horizon 5 is an upcoming racing game developed by Playground Games and published by Xbox Game Studios. It will be the fifth Forza Horizon title and twelfth main instalment in the Forza series. The game is set in a fictionalised representation of Mexico. It is set to be released on 9 November 2021", 
-'<iframe width="560" height="315" src="https://www.youtube.com/embed/FYH9n37B7Yw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+("Grounded", 2022, 15, 
+"Grounded is a survival game developed by Obsidian Entertainment and published by Xbox Game Studios. It was released for Windows and Xbox One in early access on July 28, 2020, with the full release expected in 2021. An enhanced version for the Xbox Series X/S was released on November 10, 2020. In the game, players are shrunk to the size of an ant and attempt to survive in a backyard filled with dangers.", 
+'<iframe width="560" height="315" src="https://www.youtube.com/embed/S7XDCvpIqoo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
 CREATE TABLE gameGenres (
 	idGame INTEGER,
@@ -45,7 +44,7 @@ CREATE TABLE gameGenres (
 INSERT INTO genres (name) VALUES ("Racing");
 
 INSERT INTO gameGenres (idGame, idGenre)
-VALUES (4, 	15);
+VALUES (4, 	7);
 
 SELECT *
 FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame
