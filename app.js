@@ -2,15 +2,19 @@ const express = require('express');
 const path = require('path');
 require('colors');
 const frontPage = require('./routes/');
-const createStudio = require('./routes/createStudio');
-const updateStudio = require('./routes/updateStudio');
-const ds = require('./routes/deleteStudio');
-const createGenre = require('./routes/createGenre');
-const updateGenre = require('./routes/updateGenre');
-const deleteGenre = require('./routes/deleteGenre');
-const createGame = require('./routes/createGame');
-const updateGame = require('./routes/updateGame');
-const deleteGame = require('./routes/deleteGame');
+const createStudio = require('./routes/create/studio');
+const updateStudio = require('./routes/update/studio');
+const ds = require('./routes/delete/studio');
+const createGenre = require('./routes/create/genre');
+const updateGenre = require('./routes/update/genre');
+const deleteGenre = require('./routes/delete/genre');
+const createGame = require('./routes/create/game');
+const updateGame = require('./routes/update/game');
+const deleteGame = require('./routes/delete/game');
+const readStudios = require('./routes/read/studios');
+const readGames = require('./routes/read/games');
+
+
 
 const app = express();
 
@@ -35,6 +39,9 @@ app.use('/updateGenre', updateGenre);
 app.use('/createGame', createGame);
 app.use('/deleteGame', deleteGame);
 app.use('/updateGame', updateGame);
+app.use('/studios', readStudios);
+app.use('/games', readGames);
+
 
 // errors : page not found
 app.use((req, res, next) => {

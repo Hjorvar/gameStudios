@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documengit t</title>
+  <link rel="stylesheet" type="text/css" href="/css/tables.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/special.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/rootVariables.css"/>
+</head>
+<body>
+  <table class="customTable">
+    <thead class="sticky"><tr><th>Name</th><th>Studio</th><th>Genre</th></tr></thead>
+    <% for (let i = 0; i < games.length; i += 1){ %>
+      <tr><td><%= games[i].name %> </td>
+      <td><%= games[i].studioName %> </td>
+      <td><%= games[i].genresName %> </td>
+      <td>
+        <form action="/updateGame" method="GET"><button type="submit">Update</button>
+        <input type="hidden" name="idGame" id="idGame" value="<%= games[i].id %>"></form>
+      </td>
+      <td>
+        <form action="/deleteGame" method="POST"><button type="submit">Delete</button>
+          <input type="hidden" name="idGame" id="idGame" value="<%= games[i].id %>"></form>
+      </td>
+    </tr> 
+    <% } %> 
+  </table>
+</body>
+</html>

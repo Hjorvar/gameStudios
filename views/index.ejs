@@ -10,23 +10,11 @@
   <link rel="stylesheet" type="text/css" href="/css/rootVariables.css"/>
 </head>
 <body>
-  <table class="customTable">
-    <thead class="sticky"><tr><th>Studio</th><th>Staff</th><th>City</th><th>Country</th><th class="whiteout cur_default">Update</th><th class="whiteout cur_default">Delete</th></tr></thead>
-    <% for (let i = 0; i < studios.length; i += 1){ %>
-      <tr><td><%= studios[i].name %> </td>
-      <td><%= studios[i].staffAmmount %> </td>
-      <td><%= studios[i].city %> </td>
-      <td><%= studios[i].country %> </td>
-      <td>
-        <form action="/updateStudio" method="GET"><button type="submit">Update</button>
-        <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
-      </td>
-      <td>
-        <form action="/ds" method="POST"><button type="submit">Delete</button>
-          <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
-      </td>
-    </tr> 
-    <% } %> 
-  </table>
+	<div id="navbar">
+		<ol>
+			<li><a href="/studios">Studios</a></li>
+			<li><a href="/games">Games</a></li>
+		</ol>
+	</div>
 </body>
 </html>
