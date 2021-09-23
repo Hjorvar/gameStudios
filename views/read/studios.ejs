@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documengit t</title>
-  <link rel="stylesheet" type="text/css" href="/css/tables.css"/>
-  <link rel="stylesheet" type="text/css" href="/css/special.css"/>
-  <link rel="stylesheet" type="text/css" href="/css/rootVariables.css"/>
+  <title>Document</title>
+  <% let rootpath = "../"; %>
+  <%- include(rootpath + 'include/stylesheets') %>
 </head>
 <body>
+  <%- include(rootpath + 'include/navbar') %>
   <table class="customTable">
     <thead class="sticky"><tr><th>Studio</th><th>Staff</th><th>City</th><th>Country</th><th class="whiteout cur_default">Update</th><th class="whiteout cur_default">Delete</th></tr></thead>
     <% for (let i = 0; i < studios.length; i += 1){ %>
