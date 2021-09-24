@@ -1,0 +1,47 @@
+#gameContainer {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr auto 560px;
+    grid-template-rows:
+        auto
+        [row2-start] 2em [row2-end]
+        auto
+        ;
+    grid-template-areas: 
+    "header header  header"
+    "studio studio   trailer"
+    "info   genre   trailer"
+    "info   addinfo addinfo";
+    margin: 0 auto;
+    width: 80%;
+}
+#gameName {
+    display: inline-block;
+    grid-area: header;
+    justify-self: center;
+    font-size: 3em;
+    font-weight: bold;
+}
+#gameTrailer {
+    display: inline-block;
+    grid-area: trailer;
+}
+
+#studioName {
+    display: inline-block;
+    grid-area: studio;
+    font-size: 1.5rem;
+    justify-self: center;
+    align-self: center;
+}
+
+#gameGenre {
+    display: inline-block;
+    grid-area: genre;
+    justify-self: end;
+    padding: .25rem 1rem 1rem 1rem;
+}
+
+#gameInfo{
+    display: inline-block;
+}
