@@ -10,9 +10,7 @@ const router = express.Router();
 // get index page
 router.get('/', (req, res) => {
   let where = 'WHERE 1 = 1';
-  console.log(req.query.idPlatform);
   if(req.query.idPlatform == "Xbox"){
-    console.log('haha');
     where = 'WHERE platforms.name = "Xbox Series" OR platforms.name = "Xbox One"';
   }
   if(req.query.idPlatform == "PS"){
