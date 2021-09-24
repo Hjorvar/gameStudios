@@ -9,7 +9,7 @@ const router = express.Router();
 
 // get index page
 router.get('/', (req, res) => {
-	const sql = 'SELECT games.id ,games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName, games.youtubeTrailer AS trailer, games.info AS info FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame INNER JOIN studios ON games.idStudio = studios.id INNER JOIN genres ON gameGenres.idGenre = genres.id WHERE games.id = ? GROUP BY games.id ORDER BY games.name;';
+	const sql = 'SELECT games.id, games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName, games.youtubeTrailer AS trailer, games.info AS info FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame INNER JOIN studios ON games.idStudio = studios.id INNER JOIN genres ON gameGenres.idGenre = genres.id WHERE games.id = ? GROUP BY games.id ORDER BY games.name;';
   let game = "";
 	let gameId = req.query.idGame;
 
