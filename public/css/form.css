@@ -1,0 +1,24 @@
+div#customForm {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5em;
+}
+
+#customForm > form{
+    display: inline-grid;
+    grid-template-columns: 1em 1fr 1em;
+    row-gap: .25em;
+}
+
+.item {
+    grid-column-start: 2;
+}
+
+#submitBtn {
+    grid-column-start: 1;
+    grid-column-end: last-line;
+    grid-row-start: 0;
+    padding: 0.25rem;
+    width: 50%;
+    justify-self: center;
+}

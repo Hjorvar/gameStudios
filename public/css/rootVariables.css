@@ -1,5 +1,12 @@
-:root{
+:root {
+   /*--- COLORS ---*/ 
     --bg_color: #fff;
+    --clr_main: rgb(60, 75, 102);
+    --clr_main_light: rgb(41, 84, 163);
+    --clr_main_dark: rgb(35, 48, 71);
+
+
+    /*--- SHADOWS ---*/
     --btn_shadow:
         0 0 0.3rem 0.1rem rgba(255, 255, 255, 0.1) inset,
         0 0 0.4rem 0.15rem rgba(70, 230, 255, 0.1) inset,
@@ -17,5 +24,5 @@
         0 0 0.6rem 0.15rem rgba(175, 245, 255, 0.3) inset,
         0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.1) inset,
         0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.15),
-        0 0 0.7rem 0.2rem rgba(51, 51, 204, 0.7) inset;
+        0 0 0.8rem 0.3rem var(--clr_main_light) inset;
 }

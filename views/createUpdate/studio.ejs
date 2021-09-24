@@ -5,33 +5,56 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <% let rootpath = "../"; %>
+  <%- include(rootpath + 'include/stylesheets') %>
 </head>
 <body>
+  <%- include(rootpath + 'include/navbar') %>
+  <div id="customForm">
   <% if (action == 'create') { %>
     <form action="/createStudio" method="POST">
-      <label for="studioName">Name:</label>
-      <input type="text" id="studioName" name="studioName"><br>
-      <label for="city">City:</label>
-      <input type="text" name="city" id="city"><br/>
-      <label for="country">Country:</label>
-      <input type="text" name="country" id="country"><br/>
-      <label for="staffAmmount">Staff:</label>
-      <input type="text" name="staffAmmount" id="staffAmmount"><br/>
-      <label for="founded">Founded:</label>
-      <input type="text" name="founded" id="founded"><br/>
-  <% } else { %>
+      <div class="item">
+        <label for="studioName">Name:</label>
+        <input type="text" id="studioName" name="studioName">
+      </div>
+      <div class="item">
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city">
+      </div>
+      <div class="item">
+        <label for="country">Country:</label>
+        <input type="text" name="country" id="country">
+      </div>
+      <div class="item">
+        <label for="staffAmmount">Staff:</label>
+        <input type="text" name="staffAmmount" id="staffAmmount">
+      </div>
+      <div class="item">
+        <label for="founded">Founded:</label>
+        <input type="text" name="founded" id="founded">
+      </div><% }
+   else { %>
     <form action="/updateStudio" method="POST">
-      <label for="studioName">Name:</label>
-      <input type="text" id="studioName" name="studioName" value="<%= row.name %>"><br>
+      <div class="item">
+        <label for="studioName">Name:</label>
+        <input type="text" id="studioName" name="studioName" value="<%= row.name %>">
+      </div>
       <input type="hidden" name="idStudio" value="<%= row.id %>">
-      <label for="city">City:</label>
-      <input type="text" name="city" id="city" value="<%= row.city %>"><br>
-      <label for="country">Country:</label>
-      <input type="text" name="country" id="country" value="<%= row.country %>"><br>
-      <label for="staffAmmount">Staff:</label>
-      <input type="text" name="staffAmmount" id="staffAmmount" value="<%= row.staffAmmount %>"><br>
-  <% } %>
-      <button type="submit"><%= action %></button>
+      <div class="item">
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city" value="<%= row.city %>">
+      </div>
+      <div class="item">
+        <label for="country">Country:</label>
+        <input type="text" name="country" id="country" value="<%= row.country %>">
+      </div>
+      <div class="item">
+        <label for="staffAmmount">Staff:</label>
+        <input type="text" name="staffAmmount" id="staffAmmount" value="<%= row.staffAmmount %>">
+      </div><% }
+   %>
+      <button type="submit" id="submitBtn" class="customBtn"><%= action %></button>
   </form>
+</div>
 </body>
 </html>

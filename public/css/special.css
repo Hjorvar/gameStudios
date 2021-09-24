@@ -1,16 +1,16 @@
 /*This documents hold special styling that can be used in various different places*/
-.hide{
+.hide {
     display: none;
 }
-.whiteout{
+.whiteout {
     color: var(--bg_color);
     user-select: none;
 }
 
-.sticky{
+.sticky {
     position: sticky;
 }
 
-.cur_default{
+.cur_default {
     cursor: default;
 }

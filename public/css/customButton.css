@@ -1,0 +1,28 @@
+.customBtn{
+    text-decoration: none;
+    list-style: none;
+    border: none;
+
+    background-color: var(--clr_main);
+    color: white;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    padding: .25rem;
+    text-transform:capitalize;
+    border-radius: .15rem;
+    box-shadow:var(--btn_shadow);
+    transition: 
+        border-radius 200ms ease-in,
+        box-shadow 200ms ease-in-out,
+}
+
+.customBtn:hover {
+    border-radius: .35rem;
+    box-shadow:var(--btn_shadow_hover);
+}
+
+.customBtn:focus {
+    border-radius: .35rem;
+    box-shadow:var(--btn_shadow_focus);
+}
