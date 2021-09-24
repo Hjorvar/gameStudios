@@ -11,13 +11,11 @@
 <body>
   <%- include(rootpath + 'include/navbar') %>
   <form action="/createGame" method="POST">
-    <% console.log(genres); %>
     <% for (let i = 0; i < genres.length; i += 1){ %>
       <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
       <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
       <% } %>
       <button type="submit"><%= action %></button>
-  </form>      
   </form>
 </body>
 </html>

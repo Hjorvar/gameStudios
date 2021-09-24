@@ -11,10 +11,23 @@ const router = express.Router();
 router.get('/', (req, res) => {
   let where = 'WHERE 1 = 1';
   if(req.query.idPlatform == "Xbox"){
-    where = 'WHERE platforms.name = "Xbox Series" OR platforms.name = "Xbox One"';
+    where += ' AND platforms.name = "Xbox Series" OR platforms.name = "Xbox One"';
   }
   if(req.query.idPlatform == "PS"){
-    where = 'WHERE platforms.name = "Playstation 5" or platforms.name = "Playstation 4"';
+    where += ' AND platforms.name = "Playstation 5" or platforms.name = "Playstation 4"';
+  }
+
+  if(req.query.genres){
+    console.log(req.query.genres);
+    const tempGenres = req.query.genres;
+    where += ' AND ('
+    for (let i = 0; i < tempGenres.length; i += 1){
+      where +=  ` genres.id = ${tempGenres[i]}`
+      if((i + 1) < tempGenres.length){
+        where += ' OR'
+      }
+    }
+    where += ' )'
   }
 
   const sql = `SELECT games.id, games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame INNER JOIN studios ON games.idStudio = studios.id INNER JOIN genres ON gameGenres.idGenre = genres.id INNER JOIN gamePlatforms ON games.id = gamePlatforms.idGame INNER JOIN platforms ON gamePlatforms.idPlatform = platforms.id ${where} GROUP BY games.id ORDER BY games.name;`;
@@ -36,10 +49,23 @@ router.get('/', (req, res) => {
     rows.forEach((row) => {
       games.push(row);
     })
-    // colors.yellow(console.log(studios));
-    res.render('read/games', { title: 'Games', games });
-    return true;
-  });
+
+    const sql = 'SELECT id, name FROM genres ORDER BY name';
+    let genres = [];
+
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        return console.log(colors.red(err.message));
+      }
+      console.log('Reading data from table'.green);
+      rows.forEach((row) => {
+        genres.push(row);
+      })
+
+      res.render('read/games', { title: 'Games', games, genres });
+      return true;
+    })
+  })
 
   db.close((err) => {
     if (err) {

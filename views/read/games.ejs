@@ -28,5 +28,14 @@
     </tr>
     <% } %> 
   </table>
+  <div id="INGVAR DO MAGIC">
+    <form action="/games" method="GET">
+      <% for (let i = 0; i < genres.length; i += 1){ %>
+        <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
+        <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
+        <% } %>
+        <button type="submit">Search</button>
+    </form>
+  </div>
 </body>
 </html>
