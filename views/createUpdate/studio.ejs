@@ -36,21 +36,21 @@
    else { %>
     <form action="/updateStudio" method="POST">
       <div class="formItem">
+        <input type="text" id="studioName" class="formInput" name="studioName" value="<%= row.name %>" placeholder=" ">
         <label for="studioName">Name:</label>
-        <input type="text" id="studioName" name="studioName" value="<%= row.name %>" placeholder="">
       </div>
-      <input type="hidden" name="idStudio" value="<%= row.id %>" placeholder="">
+      <input type="hidden" name="idStudio" value="<%= row.id %>" placeholder=" ">
       <div class="formItem">
+        <input type="text" class="formInput" name="city" id="city" value="<%= row.city %>" placeholder=" ">
         <label for="city">City:</label>
-        <input type="text" name="city" id="city" value="<%= row.city %>" placeholder="">
       </div>
       <div class="formItem">
+        <input type="text" class="formInput" name="country" id="country" value="<%= row.country %>" placeholder=" ">
         <label for="country">Country:</label>
-        <input type="text" name="country" id="country" value="<%= row.country %>" placeholder="">
       </div>
       <div class="formItem">
+        <input type="text" class="formInput" name="staffAmmount" id="staffAmmount" value="<%= row.staffAmmount %>" placeholder=" ">
         <label for="staffAmmount">Staff:</label>
-        <input type="text" name="staffAmmount" id="staffAmmount" value="<%= row.staffAmmount %>" placeholder="">
       </div><% }
    %>
       <button type="submit" id="submitBtn" class="customBtn"><%= action %></button>
