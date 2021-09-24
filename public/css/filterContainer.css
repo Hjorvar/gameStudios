@@ -1,0 +1,25 @@
+#filterContainer .customBtn{
+    display: block;
+    padding: 0.5rem;
+    margin: .25rem auto;
+}
+
+#filterContainer {
+    display: inline-block;
+    right: 0;
+    width: 15%;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: .25rem;
+    background-color: var(--clr_main_xxlight);
+    height: fit-content;
+}
+
+#filterContainer  #filterHeader{
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: .25rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
