@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
-const dbFile = path.join(__dirname, '../db/gameStudios.db');
+const dbFile = path.join(__dirname, '../../db/gameStudios.db');
 const colors = require('colors');
 
 const router = express.Router();
