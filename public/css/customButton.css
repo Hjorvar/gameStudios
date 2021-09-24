@@ -8,8 +8,9 @@
     display: inline-block;
     align-items: center;
     text-align: center;
-    padding: .25rem;
     text-transform:capitalize;
+    font-variant: small-caps;
+    padding: .25rem;
     border-radius: .15rem;
     box-shadow:var(--btn_shadow);
     transition: 

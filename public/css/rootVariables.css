@@ -3,7 +3,11 @@
     --bg_color: #fff;
     --clr_main: rgb(60, 75, 102);
     --clr_main_light: rgb(41, 84, 163);
+    --clr_main_xlight: rgb(214, 226, 245);
+    --clr_main_xxlight: rgb(234, 240, 250);
     --clr_main_dark: rgb(35, 48, 71);
+    --clr_main_xdark: rgb(25, 35, 51);
+    --clr_main_xxdark: rgb(8, 12, 17);
 
 
     /*--- SHADOWS ---*/
