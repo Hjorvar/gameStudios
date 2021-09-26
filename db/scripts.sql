@@ -64,28 +64,33 @@ INSERT INTO publishers (name)
 VALUES ('Xbox Game Studios'), ('Bethesda Softworks'), ('Sony Interactive Entertainment');
 
 INSERT INTO gamePublishers
-VALUES (8,3);
+VALUES (10,1);
 
 INSERT INTO platforms (name)
-VALUES ('Xbox Series'), ('Playstation 4'), ('Switch'), ('Xbox One'), ('Playstation 5');
+VALUES ('PC');
 
 INSERT INTO gamePlatforms
-VALUES (8, 2);
+VALUES (10, 6), (10, 1);
+
+DELETE FROM gamePlatforms WHERE idPlatform = 16;
 
 INSERT INTO games 
 (name, estReleaseYear, idStudio, info, youtubeTrailer)
 VALUES
-("God of War", 2018, 24, 
-"God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment (SIE). Released worldwide on April 20, 2018, for the PlayStation 4 (PS4), it is the eighth installment in the God of War series, the eighth chronologically, and the sequel to 2010's God of War III. Unlike previous games, which were loosely based on Greek mythology, this installment is loosely inspired by Norse mythology, with the majority of it set in ancient Scandinavia in the realm of Midgard. ", 
-'<iframe width="560" height="315" src="https://www.youtube.com/embed/K0u_kAWLJOA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+("Contraband", 2023, 25, 
+"Contraband is an upcoming co-operative multiplayer game being developed by Avalanche Studios for the Xbox Series X|S and Windows PCs. The game is described as being a co-op smuggler’s paradise set in the fictional world of 1970s Bayan and will be the studio's most ambitious and spectacular game to date.
+The game is being built upon the he next generation of the Apex Engine, the same technology behind the Just Cause series.", 
+'<iframe width="560" height="315" src="https://www.youtube.com/embed/reuri4lT7jI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
 INSERT INTO studios (name)
-VALUES ('Santa Monica Studio');
+VALUES ('Avalanche Studios');
 
-INSERT INTO genres (name) VALUES ("Racing");
+DELETE FROM studios WHERE id = 25 OR id = 26;
+
+INSERT INTO genres (name) VALUES ("Real-time Strategy");
 
 INSERT INTO gameGenres (idGame, idGenre)
-VALUES (8, 	12);
+VALUES (10, 	1);
 
 DELETE FROM games WHERE id = 6;
 
