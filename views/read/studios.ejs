@@ -12,7 +12,9 @@
   <%- include(rootpath + 'include/navbar') %>
   <div id="flexContainer">
     <table class="customTable">
-      <thead class="sticky"><tr><th>Studio</th><th>Staff</th><th>City</th><th>Country</th><th class="whiteout cur_default">Update</th><th class="whiteout cur_default">Delete</th></tr></thead>
+      <thead class="sticky">
+        <tr><th>Studio</th><th>Staff</th><th>City</th><th>Country</th><th class="whiteout cur_default">Update</th><th class="whiteout cur_default">Delete</th></tr>
+      </thead>
       <% for (let i = 0; i < studios.length; i += 1){ %>
         <tr><td><%= studios[i].name %> </td>
         <td><%= studios[i].staffAmmount %> </td>
@@ -31,7 +33,7 @@
     </table>
     <div id="filterContainer">
       <p>Filters</p>
-      <form action="?" method="GET">
+      <form action="?" class="hide" method="GET">
           <button type="submit" class="customBtn">Search</button>
       </form>
     </div>

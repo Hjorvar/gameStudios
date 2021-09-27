@@ -12,13 +12,11 @@
   <%- include(rootpath + 'include/navbar') %>
 	<div id="gameContainer">
 		<div id="gameName">
-			<%= game.name %>
+			<span><%= game.name %></span>
+			by<span><%= game.studioName %></span>
 		</div>
 		<div id="gameTrailer">
 			<%- game.trailer %>
-		</div>
-		<div id="studioName">
-			<%= game.studioName %>
 		</div>
 		<div id="gameGenre">
 			<%= game.genresName %>
