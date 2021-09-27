@@ -36,9 +36,23 @@
           <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
           <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
           <% } %>
+          <input type="range" min="2015" max="2030" value="2015" id="slider" name="slider">
+          <span id="sliderValue"></span>
           <button type="submit" class="customBtn">Search</button>
       </form>
     </div>
   </div>
+  <script>
+    const slider = document.getElementById('slider');
+    const sliderValue = document.getElementById('sliderValue');
+    sliderValue.innerHTML = "All years";
+    slider.oninput = () => {
+      if(slider.value == 2015){
+        sliderValue.innerHTML = "All years";
+      }else{
+        sliderValue.innerHTML = slider.value;
+      }
+    }
+  </script>
 </body>
 </html>

@@ -16,9 +16,7 @@ router.get('/', (req, res) => {
   if(req.query.idPlatform == "PS"){
     where += ' AND platforms.name = "Playstation 5" or platforms.name = "Playstation 4"';
   }
-
   if(req.query.genres){
-    console.log(req.query.genres);
     const tempGenres = req.query.genres;
     where += ' AND ('
     for (let i = 0; i < tempGenres.length; i += 1){
@@ -29,6 +27,13 @@ router.get('/', (req, res) => {
     }
     where += ' )'
   }
+  if(req.query.slider){
+    if (req.query.slider != "2015"){
+      where += ` AND estReleaseYear = ${req.query.slider}`;
+      console.log(where);
+    }
+  }
+
 
   const sql = `SELECT games.id, games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame INNER JOIN studios ON games.idStudio = studios.id INNER JOIN genres ON gameGenres.idGenre = genres.id INNER JOIN gamePlatforms ON games.id = gamePlatforms.idGame INNER JOIN platforms ON gamePlatforms.idPlatform = platforms.id ${where} GROUP BY games.id ORDER BY games.name;`;
   let games = [];
