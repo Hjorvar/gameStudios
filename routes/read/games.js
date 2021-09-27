@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
   }
   if(req.query.slider){
     if (req.query.slider != "2015"){
-      where += ` AND estReleaseYear = ${req.query.slider}`;
+      where += ` AND estReleaseYear BETWEEN ${req.query.slider} AND ${req.query.sliderMax}`;
     }
   }
 
