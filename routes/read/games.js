@@ -27,9 +27,9 @@ router.get('/', (req, res) => {
     }
     where += ' )'
   }
-  if(req.query.slider){
-    if (req.query.slider != "2015"){
-      where += ` AND estReleaseYear BETWEEN ${req.query.slider} AND ${req.query.sliderMax}`;
+  if(req.query.sliderMin){
+    if (req.query.sliderMin != "2015" || req.query.sliderMax != "2030"){
+      where += ` AND estReleaseYear BETWEEN ${req.query.sliderMin} AND ${req.query.sliderMax}`;
     }
   }
 
