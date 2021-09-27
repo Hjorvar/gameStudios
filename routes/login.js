@@ -1,16 +1,22 @@
 const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
-
 const dbFile = path.join(__dirname, '../db/gameStudios.db');
+const colors = require('colors');
 
 const router = express.Router();
 
-// get index page
-router.get('/', (req, res) => {
-  const sql = 'SELECT id, name, country, city, staffAmmount FROM studios ORDER BY name';
-  let studios = [];
 
+// get studioTemplate page
+router.get('/', (req, res) => {
+  res.redirect('/');
+});
+
+router.post('/', (req, res) => {
+
+  const user = [req.body.user, req.body.password];
+  console.log(user);
+  const sql = 'SELECT username FROM users WHERE username = ? AND password = ?;';
   const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
       return console.error(colors.red(err.message));
@@ -19,18 +25,22 @@ router.get('/', (req, res) => {
     return true;
   });
 
-  db.all(sql, [], (err, rows) => {
+  db.get(sql, [user], (err, row) => {
     if (err) {
       return console.log(colors.red(err.message));
     }
     console.log('Reading data from table'.green);
-    rows.forEach((row) => {
-      studios.push(row);
-    })
-    // colors.yellow(console.log(studios));
-    res.render('index', { title: 'Front page', studios });
+    console.log(row);
+    if(row > 0){
+      req.session.loggedin = true;
+      req.session.username = username;
+      res.redirect('/');
+    } else {
+      res.send('Incorrect Username and/or Password!');
+    }
+  
     return true;
-  });
+  });;
 
   db.close((err) => {
     if (err) {
@@ -39,7 +49,6 @@ router.get('/', (req, res) => {
     console.log('Close the database connection'.green);
     return true;
   });
-
 });
 
 module.exports = router;

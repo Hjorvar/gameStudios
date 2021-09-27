@@ -100,3 +100,14 @@ INNER JOIN studios ON games.idStudio = studios.id
 ORDER BY games.name;
 
 SELECT games.id ,games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame INNER JOIN studios ON games.idStudio = studios.id INNER JOIN genres ON gameGenres.idGenre = genres.id WHERE 1 = 1 GROUP BY games.id  ORDER BY games.name;
+
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  username TEXT NOT NULL  UNIQUE,
+  password TEXT NOT NULL
+  );
+
+INSERT INTO users (username, password)
+VALUES ('Hjorvar', 'kennari'), ('Ingvar', 'oli'), ('Brynjar', 'yngstur') ;
+
+SELECT username FROM users WHERE username = 'Hjorvar' AND password = 'kennari';

@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const session = require('express-session');
 require('colors');
 const frontPage = require('./routes/');
 
@@ -15,6 +16,8 @@ const updateStudio = require('./routes/update/studio');
 const deleteGame = require('./routes/delete/game');
 const deleteGenre = require('./routes/delete/genre');
 const ds = require('./routes/delete/studio');
+
+const login = require('./routes/login');
 
 const readGame = require('./routes/read/game');
 const readGames = require('./routes/read/games');
@@ -32,6 +35,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// session
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
 // routers
 app.use('/', frontPage);
 app.use('/createGame', createGame);
@@ -46,6 +56,8 @@ app.use('/ds', ds);
 app.use('/updateGame', updateGame);
 app.use('/updateGenre', updateGenre);
 app.use('/updateStudio', updateStudio);
+
+app.use('/login', login);
 
 app.use('/game', readGame);
 app.use('/games', readGames);
