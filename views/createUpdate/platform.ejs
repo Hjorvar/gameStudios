@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <% let rootpath = "../"; %>
+  <%- include(rootpath + 'include/stylesheets') %>
+</head>
+<body>
+  <%- include(rootpath + 'include/navbar') %>
+  <% if (action == 'create') { %>
+    <form action="/createPlatform" method="POST">
+      <label for="platformName">Name:</label>
+      <input type="text" id="platformName" name="platformName" autofocus><br>
+  <% } else { %>
+    <form action="/updatePlatform" method="POST">
+      <label for="platformName">Name:</label>
+      <input type="text" id="platformName" name="platformName" value="<%= row.name %>"><br>
+  <% } %>
+      <button type="submit"><%= action %></button>
+  </form>
+</body>
+</html>

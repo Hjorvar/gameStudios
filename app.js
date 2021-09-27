@@ -2,21 +2,23 @@ const express = require('express');
 const path = require('path');
 require('colors');
 const frontPage = require('./routes/');
-const createStudio = require('./routes/create/studio');
-const updateStudio = require('./routes/update/studio');
-const ds = require('./routes/delete/studio');
-const createGenre = require('./routes/create/genre');
-const updateGenre = require('./routes/update/genre');
-const deleteGenre = require('./routes/delete/genre');
+
 const createGame = require('./routes/create/game');
+const createGenre = require('./routes/create/genre');
+const createPlatform = require('./routes/create/platform');
+const createStudio = require('./routes/create/studio');
+
 const updateGame = require('./routes/update/game');
+const updateGenre = require('./routes/update/genre');
+const updateStudio = require('./routes/update/studio');
+
 const deleteGame = require('./routes/delete/game');
-const readStudios = require('./routes/read/studios');
-const readGames = require('./routes/read/games');
+const deleteGenre = require('./routes/delete/genre');
+const ds = require('./routes/delete/studio');
+
 const readGame = require('./routes/read/game');
-
-
-
+const readGames = require('./routes/read/games');
+const readStudios = require('./routes/read/studios');
 
 const app = express();
 
@@ -32,18 +34,22 @@ app.set('view engine', 'ejs');
 
 // routers
 app.use('/', frontPage);
-app.use('/createStudio', createStudio);
-app.use('/ds', ds);
-app.use('/updateStudio', updateStudio);
-app.use('/createGenre', createGenre);
-app.use('/deleteGenre', deleteGenre);
-app.use('/updateGenre', updateGenre);
 app.use('/createGame', createGame);
+app.use('/createGenre', createGenre);
+app.use('/createPlatform', createPlatform);
+app.use('/createStudio', createStudio);
+
 app.use('/deleteGame', deleteGame);
+app.use('/deleteGenre', deleteGenre);
+app.use('/ds', ds);
+
 app.use('/updateGame', updateGame);
-app.use('/studios', readStudios);
-app.use('/games', readGames);
+app.use('/updateGenre', updateGenre);
+app.use('/updateStudio', updateStudio);
+
 app.use('/game', readGame);
+app.use('/games', readGames);
+app.use('/studios', readStudios);
 
 
 
