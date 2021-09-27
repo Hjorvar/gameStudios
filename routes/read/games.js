@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
     for (let i = 0; i < tempGenres.length; i += 1){
       where +=  ` genres.id = ${tempGenres[i]}`
       if((i + 1) < tempGenres.length){
-        where += ' OR'
+        where += ' AND'
       }
     }
     where += ' )'
