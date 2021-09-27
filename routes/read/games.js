@@ -18,11 +18,11 @@ router.get('/', (req, res) => {
   }
   if(req.query.genres){
     const tempGenres = req.query.genres;
-    where += ' AND ('
+    where += ' AND (';
     for (let i = 0; i < tempGenres.length; i += 1){
       where +=  ` genres.id = ${tempGenres[i]}`
       if((i + 1) < tempGenres.length){
-        where += ' AND'
+        where += ' AND';
       }
     }
     where += ' )'
@@ -52,7 +52,7 @@ router.get('/', (req, res) => {
     console.log('Reading data from table'.green);
     rows.forEach((row) => {
       games.push(row);
-    })
+    });
 
     const sql = 'SELECT id, name FROM genres ORDER BY name';
     let genres = [];
@@ -64,12 +64,12 @@ router.get('/', (req, res) => {
       console.log('Reading data from table'.green);
       rows.forEach((row) => {
         genres.push(row);
-      })
+      });
 
       res.render('read/games', { title: 'Games', games, genres });
       return true;
-    })
-  })
+    });
+  });
 
   db.close((err) => {
     if (err) {
