@@ -10,19 +10,25 @@
 </head>
 <body>
   <%- include(rootpath + 'include/navbar') %>
-	<div id="gameContainer">
+	<div id="gameContainer" class="sandblasted">
 		<div id="gameName">
-			<span><%= game.name %></span>
+			<span><%= game.name %></span> <br>
 			by<span><%= game.studioName %></span>
 		</div>
-		<div id="gameTrailer">
-			<%- game.trailer %>
-		</div>
-		<div id="gameGenre">
-			<%= game.genresName %>
-		</div>
-		<div id="gameInfo">
-			<%= game.info %>
+		<div id="content">
+			<div class="right innerContainer">
+				<div id="gameGenre">
+					<h1>Generes</h1>
+					<%= game.genresName %>
+				</div>
+				<div id="gameTrailer">
+					<%- game.trailer %>
+				</div>
+			</div>
+			<h2 class="head">Information about the game</h2>
+			<p id="gameInfo">
+				<%= game.info %>
+			</p>
 		</div>
 	</div>
 </body>
