@@ -13,7 +13,14 @@
   <div id="flexContainer">
     <table class="customTable">
       <thead class="sticky">
-        <tr><th>Studio</th><th>Staff</th><th>City</th><th>Country</th><th class="whiteout cur_default">Update</th><th class="whiteout cur_default">Delete</th></tr>
+        <tr>
+          <th>Studio</th>
+          <th>Staff</th>
+          <th>City</th>
+          <th>Country</th>
+          <th class="whiteout cur_default">Update</th>
+          <th class="whiteout cur_default">Delete</th>
+        </tr>
       </thead>
       <% for (let i = 0; i < studios.length; i += 1){ %>
         <tr><td><%= studios[i].name %> </td>
