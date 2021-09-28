@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
   console.log('mamma');
   console.log(req.session);
   if (req.session.loggedin) {
-    res.render('createUpdate/studios', { title: 'Create', action: 'create' });
+    res.render('createUpdate/studio', { title: 'Create', action: 'create' });
   } else {
     res.redirect(301, '/' );
 	}
@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
   console.log('pabbi');
   if (req.session.loggedin) {
     createStudio(dbFile, req.body.studioName, req.body.city, req.body.country, req.body.staffAmmount, req.body.founded);
-    res.render('createUpdate/studios', { title: 'Create', action: 'create' });
+    res.render('createUpdate/studio', { title: 'Create', action: 'create' });
   } else {
     res.redirect(301, '/' );
 	}
