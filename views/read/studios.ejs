@@ -11,7 +11,7 @@
 <body>
   <%- include(rootpath + 'include/navbar') %>
   <div id="flexContainer">
-    <table class="customTable">
+    <table class="customTable sandblasted">
       <thead class="sticky">
         <tr>
           <th>Studio</th>
@@ -27,19 +27,19 @@
         <td><%= studios[i].staffAmmount %> </td>
         <td><%= studios[i].city %> </td>
         <td><%= studios[i].country %> </td>
-        <td>
-          <form action="/updateStudio" method="GET"><button type="submit">Update</button>
+        <td class="buttonContainer">
+          <form action="/updateStudio" method="GET"><button type="submit" class="customBtn">Update</button>
           <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
         </td>
-        <td>
-          <form action="/ds" method="POST"><button type="submit">Delete</button>
+        <td class="buttonContainer">
+          <form action="/ds" method="POST"><button type="submit" class="customBtn">Delete</button>
           <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
         </td>
       </tr> 
       <% } %> 
     </table>
     <div id="filterContainer">
-      <p>Filters</p>
+      <p id="filterHeader">Filters</p>
       <form action="?" class="hide" method="GET">
           <button type="submit" class="customBtn">Search</button>
       </form>
