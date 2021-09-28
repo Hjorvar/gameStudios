@@ -36,13 +36,24 @@ function createPlatform(dbFile, name){
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  res.render('createUpdate/platform', { title: 'Create', action: 'create' });
+  console.log('mamma');
+  if (req.session.loggedin) {
+    res.render('createUpdate/platform', { title: 'Create', action: 'create' });
+	} else {
+    console.log('hahaha')
+    // res.redirect(301, '/' );
+	}
 });
 
 router.post('/', (req, res) => {
-
-  createPlatform(dbFile, req.body.platformName);
-  res.render('createUpdate/platform', { title: 'Create', action: 'create' });
+  console.log('pabbi');
+  if (req.session.loggedin) {
+    createPlatform(dbFile, req.body.platformName);
+    res.render('createUpdate/platform', { title: 'Create', action: 'create' });
+    } else {
+      console.log('hahaha')
+      // res.redirect(301, '/' );
+	}
 });
 
 module.exports = router;

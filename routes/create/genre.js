@@ -36,13 +36,23 @@ function createGenre(dbFile, name){
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  res.render('createUpdate/genres', { title: 'Create', action: 'create' });
+  console.log('mamma');
+  if (req.session.loggedin) {
+    res.render('createUpdate/genres', { title: 'Create', action: 'create' });
+	} else {
+    res.redirect(301, '/' );
+	}
 });
 
 router.post('/', (req, res) => {
+  console.log('pabbi');
+  if (req.session.loggedin) {
+    createGenre(dbFile, req.body.genreName);
+    res.render('createUpdate/genres', { title: 'Create', action: 'create' });
+  } else {
+    res.redirect(301, '/' );
+	}
 
-  createGenre(dbFile, req.body.genreName);
-  res.render('createUpdate/genres', { title: 'Create', action: 'create' });
 });
 
 module.exports = router;

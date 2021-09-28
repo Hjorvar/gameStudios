@@ -15,7 +15,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
   const user = [req.body.user, req.body.password];
-  console.log(user);
   const sql = 'SELECT username FROM users WHERE username = ? AND password = ?;';
   const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
@@ -25,15 +24,14 @@ router.post('/', (req, res) => {
     return true;
   });
 
-  db.get(sql, [user], (err, row) => {
+  db.get(sql, user, (err, row) => {
     if (err) {
       return console.log(colors.red(err.message));
     }
     console.log('Reading data from table'.green);
-    console.log(row);
-    if(row > 0){
+    if(row){
       req.session.loggedin = true;
-      req.session.username = username;
+      req.session.username = row.username;
       res.redirect('/');
     } else {
       res.send('Incorrect Username and/or Password!');
