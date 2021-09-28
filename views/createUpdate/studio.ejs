@@ -32,8 +32,7 @@
       <div class="formItem">
         <input type="text" class="formInput" name="founded" id="founded" placeholder=" ">
         <label for="founded">Founded:</label>
-      </div><% }
-   else { %>
+      </div><% } else { %>
     <form action="/updateStudio" method="POST">
       <div class="formItem">
         <input type="text" id="studioName" class="formInput" name="studioName" value="<%= row.name %>" placeholder=" ">
@@ -56,8 +55,7 @@
         <input type="text" class="formInput" name="founded" id="founded" value="<%= row.founded %>" placeholder=" ">
         <label for="founded">Founded:</label>
       </div>
-    <% }
-   %>
+    <% } %>
       <button type="submit" id="submitBtn" class="customBtn"><%= action %></button>
   </form>
 </div>
