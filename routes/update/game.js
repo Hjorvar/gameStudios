@@ -66,7 +66,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   updateGame(dbFile, req.body.idGame, req.body.gameName, req.body.year, req.body.month, req.body.idStudio, req.body.ytTrailer, req.body.info);
-  res.redirect('/studios');
+  res.redirect('/games');
 });
 
 module.exports = router;

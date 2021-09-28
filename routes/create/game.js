@@ -6,20 +6,9 @@ const colors = require('colors');
 
 const router = express.Router();
 
-function createConnection(dbFile){
-  const db = new sqlite3.Database(dbFile, (err) => {
-    if (err) {
-      return console.error(colors.red(err.message));
-    }
-    console.log('Connected to the SQLite database'.green);
-    return true;
-  });
-  return db
-}
-
-function createGenre(dbFile, name){
-  const studio = [name];
-  const sql = 'INSERT INTO genres(name) VALUES (?)';
+function createGame(dbFile, name, year, month, idStudio, ytTrailer, info){
+  const game = [name, year, month, idStudio, ytTrailer, info];
+  const sql = 'INSERT INTO games(name, year, month, idStudio, ytTrailer, info) VALUES (?, ?, ?, ?, ?, ?)';
   const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
       return console.error(colors.red(err.message));
@@ -28,7 +17,7 @@ function createGenre(dbFile, name){
     return true;
   });
 
-  db.run(sql, studio, (err) => {
+  db.run(sql, game, (err) => {
     if (err) {
       return console.log(colors.red(err.message));
     }
@@ -45,44 +34,24 @@ function createGenre(dbFile, name){
   });
 }
 
-function readGenres(dbFile, res){
-  const sql = 'SELECT id, name FROM genres ORDER BY name';
-  let genres = [];
-
-  const db = createConnection(dbFile);
-
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      return console.log(colors.red(err.message));
-    }
-    console.log('Reading data from table'.green);
-    rows.forEach((row) => {
-      genres.push(row);
-    })
-    // colors.yellow(console.log(studios));
-    res.render('createUpdate/game', { title: 'Game page', genres, action: "create" });
-    return true;
-  });
-
-  db.close((err) => {
-    if (err) {
-      return console.error(colors.red(err.message));
-    }
-    console.log('Close the database connection'.green);
-    return true;
-  });
-}
-
 // get studioTemplate page
 router.get('/', (req, res) => {
-  readGenres(dbFile, res);
-  // res.render('createUpdate/genres', { title: 'Create', action: 'create' });
+  if (req.session.loggedin) {
+    res.render('createUpdate/game', { title: 'Create', action: 'create' });
+  } else {
+    console.log('einhver reyndi að koma hingað sem má það ekki'.red);
+    res.redirect(301, '/' );
+	}
 });
 
-
 router.post('/', (req, res) => {
-  
-  console.log(req.body.genres);
+  if (req.session.loggedin) {
+    createGame(dbFile, req.body.gameName, req.body.year, req.body.month, req.body.idStudio, req.body.ytTrailer, req.body.info);
+    res.render('createUpdate/game', { title: 'Create', action: 'create' });
+  } else {
+    console.log('einhver reyndi að koma hingað sem má það ekki'.red);
+    res.redirect(301, '/' );
+  }
 });
 
 module.exports = router;
