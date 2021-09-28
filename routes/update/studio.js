@@ -8,8 +8,8 @@ const router = express.Router();
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  const sql = 'SELECT * FROM studios ORDER BY name';
-  let idStudio = req.body.idStudio;
+  const idStudio = req.query.idStudio;
+  const sql = `SELECT * FROM studios WHERE id = ?`;
 
   const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
