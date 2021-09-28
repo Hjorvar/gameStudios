@@ -8,6 +8,11 @@ const router = express.Router();
 
 // get index page
 router.get('/', (req, res) => {
+  let username = 'none';
+  if (req.session.loggedin) {
+    username = req.session.username;
+	}
+
   const sql = 'SELECT id, name, country, city, staffAmmount FROM studios ORDER BY name';
   let studios = [];
 
@@ -27,8 +32,8 @@ router.get('/', (req, res) => {
     rows.forEach((row) => {
       studios.push(row);
     })
-    // colors.yellow(console.log(studios));
-    res.render('read/studios', { title: 'Studios', studios });
+
+    res.render('read/studios', { title: 'Studios', studios, username });
     return true;
   });
 

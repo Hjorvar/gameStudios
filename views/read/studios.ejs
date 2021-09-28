@@ -18,8 +18,10 @@
           <th>Staff</th>
           <th>City</th>
           <th>Country</th>
+          <% if(username != 'none') { %>
           <th class="whiteout cur_default">Update</th>
           <th class="whiteout cur_default">Delete</th>
+          <% } %>
         </tr>
       </thead>
       <% for (let i = 0; i < studios.length; i += 1){ %>
@@ -27,6 +29,7 @@
         <td><%= studios[i].staffAmmount %> </td>
         <td><%= studios[i].city %> </td>
         <td><%= studios[i].country %> </td>
+        <% if(username != 'none') { %>
         <td class="buttonContainer">
           <form action="/updateStudio" method="GET"><button type="submit" class="customBtn">Update</button>
           <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
@@ -35,6 +38,7 @@
           <form action="/ds" method="POST"><button type="submit" class="customBtn">Delete</button>
           <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
         </td>
+        <% } %>
       </tr> 
       <% } %> 
     </table>
