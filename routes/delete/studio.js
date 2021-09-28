@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const dbFile = path.join(__dirname, '../db/gameStudios.db');
+  const dbFile = path.join(__dirname, '../../db/gameStudios.db');
   const sql = 'DELETE FROM studios WHERE id = ?';
   let idStudio = req.body.idStudio;
 
