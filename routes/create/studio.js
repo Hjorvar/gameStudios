@@ -3,6 +3,7 @@ const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
 const colors = require('colors');
+const { runInNewContext } = require('vm');
 
 const router = express.Router();
 function createStudio(dbFile, name, city, country, staff, founded){
@@ -35,12 +36,11 @@ function createStudio(dbFile, name, city, country, staff, founded){
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  console.log('mamma');
-  console.log(req.session);
   if (req.session.loggedin) {
     res.render('createUpdate/studio', { title: 'Create', action: 'create' });
   } else {
-    res.redirect(301, '/' );
+    console.log('haha, komst ekki inn');
+    // res.redirect(301, '/' );
 	}
 });
 
@@ -50,7 +50,8 @@ router.post('/', (req, res) => {
     createStudio(dbFile, req.body.studioName, req.body.city, req.body.country, req.body.staffAmmount, req.body.founded);
     res.render('createUpdate/studio', { title: 'Create', action: 'create' });
   } else {
-    res.redirect(301, '/' );
+    console.log('haha, komst ekki inn');
+    // res.redirect(301, '/' );
 	}
 
 });

@@ -40,7 +40,9 @@ router.get('/', (req, res) => {
   if (req.session.loggedin) {
     res.render('createUpdate/genres', { title: 'Create', action: 'create' });
 	} else {
-    res.redirect(301, '/' );
+    // res.redirect(301, '/' );
+    console.log('haha, komst ekki inn');
+
 	}
 });
 
@@ -50,7 +52,8 @@ router.post('/', (req, res) => {
     createGenre(dbFile, req.body.genreName);
     res.render('createUpdate/genres', { title: 'Create', action: 'create' });
   } else {
-    res.redirect(301, '/' );
+    // res.redirect(301, '/' );
+    console.log('haha, komst ekki inn');
 	}
 
 });
