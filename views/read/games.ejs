@@ -11,7 +11,7 @@
 <body>
   <%- include(rootpath + 'include/navbar') %>
   <div id="flexContainer">
-    <table class="customTable">
+    <table class="customTable sandblasted">
       <thead class="sticky">
         <tr>
           <th>Name</th>
@@ -27,29 +27,29 @@
           <td><%= games[i].studioName %> </td>
           <td><%= games[i].genresName %> </td>
         <td>
-          <form action="/updateGame" method="GET"><button type="submit">Update</button>
+          <form action="/updateGame" method="GET"><button type="submit" class="customBtn">Update</button>
           <input type="hidden" name="idGame" id="idGame" value="<%= games[i].id %>"></form>
         </td>
         <td>
-          <form action="/deleteGame" method="POST"><button type="submit">Delete</button>
+          <form action="/deleteGame" method="POST"><button type="submit" class="customBtn">Delete</button>
             <input type="hidden" name="idGame" id="idGame" value="<%= games[i].id %>"></form>
         </td>
       </tr>
       <% } %> 
     </table>
-    <div id="filterContainer">
-      <p id="filterHeader">Filters</p>
-      <form action="?" method="GET">
-        <% for (let i = 0; i < genres.length; i += 1){ %>
-          <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
-          <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
-          <% } %>
-          <span id="sliderValue"></span><br>
-          <input type="range" min="2015" max="2030" value="2015" id="sliderMin" name="sliderMin">
-          <input type="range" min="2015" max="2030" value="2030" id="sliderMax" name="sliderMax">
-          <button type="submit" class="customBtn">Search</button>
-      </form>
-    </div>
+  </div>
+  <div id="filterContainer">
+    <p id="filterHeader">Filters</p>
+    <form action="?" method="GET">
+      <% for (let i = 0; i < genres.length; i += 1){ %>
+        <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
+        <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
+        <% } %>
+        <span id="sliderValue"></span><br>
+        <input type="range" min="2015" max="2030" value="2015" id="sliderMin" name="sliderMin">
+        <input type="range" min="2015" max="2030" value="2030" id="sliderMax" name="sliderMax">
+        <button type="submit" class="customBtn">Search</button>
+    </form>
   </div>
   <script src="js/games.js"></script>
 </body>
