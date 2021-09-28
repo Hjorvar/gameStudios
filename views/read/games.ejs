@@ -26,11 +26,11 @@
           <td><%= games[i].name %></td>
           <td><%= games[i].studioName %> </td>
           <td><%= games[i].genresName %> </td>
-        <td>
+        <td class="buttonContainer">
           <form action="/updateGame" method="GET"><button type="submit" class="customBtn">Update</button>
           <input type="hidden" name="idGame" id="idGame" value="<%= games[i].id %>"></form>
         </td>
-        <td>
+        <td class="buttonContainer">
           <form action="/deleteGame" method="POST"><button type="submit" class="customBtn">Delete</button>
             <input type="hidden" name="idGame" id="idGame" value="<%= games[i].id %>"></form>
         </td>

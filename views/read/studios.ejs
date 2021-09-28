@@ -27,11 +27,11 @@
         <td><%= studios[i].staffAmmount %> </td>
         <td><%= studios[i].city %> </td>
         <td><%= studios[i].country %> </td>
-        <td>
+        <td class="buttonContainer">
           <form action="/updateStudio" method="GET"><button type="submit" class="customBtn">Update</button>
           <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
         </td>
-        <td>
+        <td class="buttonContainer">
           <form action="/ds" method="POST"><button type="submit" class="customBtn">Delete</button>
           <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
         </td>
