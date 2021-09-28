@@ -39,8 +39,8 @@ router.get('/', (req, res) => {
   if (req.session.loggedin) {
     res.render('createUpdate/studio', { title: 'Create', action: 'create' });
   } else {
-    console.log('haha, komst ekki inn');
-    // res.redirect(301, '/' );
+    colors.red(console.log('einhver reyndi að koma hingað sem má það ekki'));
+    res.redirect(301, '/' );
 	}
 });
 
@@ -50,8 +50,8 @@ router.post('/', (req, res) => {
     createStudio(dbFile, req.body.studioName, req.body.city, req.body.country, req.body.staffAmmount, req.body.founded);
     res.render('createUpdate/studio', { title: 'Create', action: 'create' });
   } else {
-    console.log('haha, komst ekki inn');
-    // res.redirect(301, '/' );
+    colors.red(console.log('einhver reyndi að koma hingað sem má það ekki'));
+    res.redirect(301, '/' );
 	}
 
 });

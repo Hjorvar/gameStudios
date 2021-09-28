@@ -36,12 +36,11 @@ function createGenre(dbFile, name){
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  console.log('mamma');
   if (req.session.loggedin) {
     res.render('createUpdate/genres', { title: 'Create', action: 'create' });
 	} else {
-    // res.redirect(301, '/' );
-    console.log('haha, komst ekki inn');
+    colors.red(console.log('einhver reyndi að koma hingað sem má það ekki'));
+    res.redirect(301, '/' );
 
 	}
 });
@@ -52,8 +51,8 @@ router.post('/', (req, res) => {
     createGenre(dbFile, req.body.genreName);
     res.render('createUpdate/genres', { title: 'Create', action: 'create' });
   } else {
-    // res.redirect(301, '/' );
-    console.log('haha, komst ekki inn');
+    colors.red(console.log('einhver reyndi að koma hingað sem má það ekki'));
+    res.redirect(301, '/' );
 	}
 
 });
