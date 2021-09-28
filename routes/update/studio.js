@@ -7,7 +7,7 @@ const colors = require('colors');
 const router = express.Router();
 
 
-function updateStudio(dbFile ,id, name, staffAmmount, city, country, founded){
+function updateStudio(dbFile, id, name, staffAmmount, city, country, founded){
   const studio = [name, staffAmmount, city, country, founded, id];
   const sql = 'UPDATE studios SET name = ?, staffAmmount = ?, city = ?, country = ?, founded = ?  WHERE id = ?';
   console.log(studio);

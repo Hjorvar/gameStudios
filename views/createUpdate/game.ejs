@@ -10,12 +10,58 @@
 </head>
 <body>
   <%- include(rootpath + 'include/navbar') %>
-  <form action="/createGame" method="POST">
-    <% for (let i = 0; i < genres.length; i += 1){ %>
-      <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
-      <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
-      <% } %>
-      <button type="submit"><%= action %></button>
-  </form>
+  <div id="customForm">
+  <% if (action == 'create') { %>
+    <form action="/createGame" method="POST">
+      <div class="formItem">
+        <input type="text" class="formInput" id="gameName" class="formInput" name="gameName" placeholder=" ">
+        <label for="gameName">Name:</label>
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="year" id="year" placeholder=" ">
+        <label for="year">Year:</label>
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="month" id="month" placeholder=" ">
+        <label for="month">Month:</label>
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="idStudio" id="idStudio" placeholder=" ">
+        <label for="idStudio">Studio id:</label>
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="ytTrailer" id="ytTrailer" placeholder=" ">
+        <label for="ytTrailer">Youtube trailer link:</label>
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="info" id="info" placeholder=" ">
+        <label for="info">Info:</label>
+      </div><% } else { %>
+    <form action="/updateGame" method="POST">
+      <div class="formItem">
+        <input type="text" id="gameName" class="formInput" name="gameName" value="<%= row.name %>" placeholder=" ">
+        <label for="gameName">Name:</label>
+      </div>
+      <input type="hidden" name="idGame" value="<%= row.id %>" placeholder=" ">
+      <div class="formItem">
+        <input type="text" class="formInput" name="year" id="year" value="<%= row.year %>" placeholder=" ">
+        <label for="year">Year:</label>
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="month" id="month" value="<%= row.month %>" placeholder=" ">
+        <label for="month">Month:</label>
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="idStudio" id="idStudio" value="<%= row.idStudio %>" placeholder=" ">
+        <label for="idStudio">Studio id:</label>
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="info" id="info" value="<%= row.info %>" placeholder=" ">
+        <label for="info">Info:</label>
+      </div>
+    <% } %>
+      <button type="submit" id="submitBtn" class="customBtn"><%= action %></button>
+    </form>
+  </div>
 </body>
 </html>

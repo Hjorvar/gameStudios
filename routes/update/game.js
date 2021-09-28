@@ -6,9 +6,9 @@ const colors = require('colors');
 
 const router = express.Router();
 
-function createGenre(dbFile, name){
-  const studio = [name];
-  const sql = 'INSERT INTO genres(name) VALUES (?)';
+function updateGame(dbFile, id, name, year, month, idStudio, ytTrailer, info){
+  const game = [name, year, month, idStudio, ytTrailer, info, id];
+  const sql = 'UPDATE studios SET name = ?, year = ?, month = ?, idStudio = ?, ytTrailer = ?, info = ? WHERE id = ?';
   const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
       return console.error(colors.red(err.message));
@@ -17,7 +17,7 @@ function createGenre(dbFile, name){
     return true;
   });
 
-  db.run(sql, studio, (err) => {
+  db.run(sql, game, (err) => {
     if (err) {
       return console.log(colors.red(err.message));
     }
@@ -36,13 +36,37 @@ function createGenre(dbFile, name){
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  res.render('createUpdate/genres', { title: 'Create', action: 'create' });
+  const idGame = req.query.idGame;
+  const sql = `SELECT * FROM games WHERE id = ?`;
+
+  const db = new sqlite3.Database(dbFile, (err) => {
+    if (err) {
+      return console.error(colors.red(err.message));
+    }
+    console.log('Connected to the SQLite database'.green);
+    return true;
+  });
+
+  db.get(sql, [idGame], (err, row) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.render('createUpdate/game', { title: 'Update', action: 'update', row });
+    return row
+  });
+
+  db.close((err) => {
+    if (err) {
+      return console.error(colors.red(err.message));
+    }
+    console.log('Close the database connection'.green);
+    return true;
+  });
 });
 
 router.post('/', (req, res) => {
-
-  createGenre(dbFile, req.body.genreName);
-  res.json(req.body);
+  updateGame(dbFile, req.body.idGame, req.body.gameName, req.body.year, req.body.month, req.body.idStudio, req.body.ytTrailer, req.body.info);
+  res.redirect('/studios');
 });
 
 module.exports = router;
