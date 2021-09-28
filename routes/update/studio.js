@@ -8,7 +8,7 @@ const router = express.Router();
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  const sql = 'SELECT id, name FROM studios ORDER BY name';
+  const sql = 'SELECT * FROM studios ORDER BY name';
   let idStudio = req.body.idStudio;
 
   const db = new sqlite3.Database(dbFile, (err) => {

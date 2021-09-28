@@ -51,7 +51,12 @@
       <div class="formItem">
         <input type="text" class="formInput" name="staffAmmount" id="staffAmmount" value="<%= row.staffAmmount %>" placeholder=" ">
         <label for="staffAmmount">Staff:</label>
-      </div><% }
+      </div>
+      <div class="formItem">
+        <input type="text" class="formInput" name="founded" id="founded" value="<%= row.founded %>" placeholder=" ">
+        <label for="founded">Founded:</label>
+      </div>
+    <% }
    %>
       <button type="submit" id="submitBtn" class="customBtn"><%= action %></button>
   </form>
