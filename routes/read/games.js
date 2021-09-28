@@ -9,6 +9,12 @@ const router = express.Router();
 
 // get index page
 router.get('/', (req, res) => {
+
+  let username = 'none';
+  if (req.session.loggedin) {
+    username = req.session.username;
+	}
+
   let where = 'WHERE 1 = 1';
   if(req.query.idPlatform == "Xbox"){
     where += ' AND platforms.name = "Xbox Series" OR platforms.name = "Xbox One"';
@@ -66,7 +72,7 @@ router.get('/', (req, res) => {
         genres.push(row);
       });
 
-      res.render('read/games', { title: 'Games', games, genres });
+      res.render('read/games', { title: 'Games', games, genres, username });
       return true;
     });
   });
