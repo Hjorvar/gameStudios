@@ -8,37 +8,13 @@ const router = express.Router();
 
 // get index page
 router.get('/', (req, res) => {
-  // const sql = 'SELECT id, name, country, city, staffAmmount FROM studios ORDER BY name';
-  // let studios = [];
-
-  // const db = new sqlite3.Database(dbFile, (err) => {
-  //   if (err) {
-  //     return console.error(colors.red(err.message));
-  //   }
-  //   console.log('Connected to the SQLite database'.green);
-  //   return true;
-  // });
-
-  // db.all(sql, [], (err, rows) => {
-  //   if (err) {
-  //     return console.log(colors.red(err.message));
-  //   }
-  //   console.log('Reading data from table'.green);
-  //   rows.forEach((row) => {
-  //     studios.push(row);
-  //   })
-    res.render('index', { title: 'Front page' });
-  //   return true;
-  // });
-
-  // db.close((err) => {
-  //   if (err) {
-  //     return console.error(colors.red(err.message));
-  //   }
-  //   console.log('Close the database connection'.green);
-  //   return true;
-  // });
-
+  if (req.session.loggedin) {
+    const username = req.session.username;
+    res.render('index', { title: 'Front page', username });
+	} else {
+    const username = 'none';
+    res.render('index', { title: 'Front page', username });
+	}
 });
 
 module.exports = router;

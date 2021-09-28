@@ -18,6 +18,7 @@ const deleteGenre = require('./routes/delete/genre');
 const ds = require('./routes/delete/studio');
 
 const login = require('./routes/login');
+const logout = require('./routes/logout');
 
 const readGame = require('./routes/read/game');
 const readGames = require('./routes/read/games');
@@ -58,6 +59,7 @@ app.use('/updateGenre', updateGenre);
 app.use('/updateStudio', updateStudio);
 
 app.use('/login', login);
+app.use('/logout', logout);
 
 app.use('/game', readGame);
 app.use('/games', readGames);
