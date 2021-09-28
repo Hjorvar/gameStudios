@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const Worker = require('../../db/Worker');
+const colors = require('colors');
 const db = new Worker(path.join(__dirname, '../db/gameStudios.db'));
 
 const router = express.Router();
