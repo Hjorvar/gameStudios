@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
   if (req.session.loggedin) {
     res.render('createUpdate/genres', { title: 'Create', action: 'create' });
 	} else {
-    colors.red(console.log('einhver reyndi að koma hingað sem má það ekki'));
+    console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
 
 	}
@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
     createGenre(dbFile, req.body.genreName);
     res.render('createUpdate/genres', { title: 'Create', action: 'create' });
   } else {
-    colors.red(console.log('einhver reyndi að koma hingað sem má það ekki'));
+    console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
 	}
 
