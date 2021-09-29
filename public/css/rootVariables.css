@@ -29,4 +29,7 @@
         0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.1) inset,
         0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.15),
         0 0 0.8rem 0.3rem var(--clr_main_light) inset;
+    
+    /*--- BORDERS ---*/
+    --border_radius_hover: .35rem;
 }

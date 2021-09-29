@@ -13,6 +13,9 @@
     border-radius: .25rem;
     background-color: var(--clr_main_xxlight);
     height: fit-content;
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
 }
 
 #filterContainer  #filterHeader{

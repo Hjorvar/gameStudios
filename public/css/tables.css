@@ -1,18 +1,13 @@
 #flexContainer {
     display: flex;
+    justify-content: center;
 }
 table.customTable {
-    display: inline-block;
-    margin-top: 1.5rem;
-    margin-left: auto;
-    margin-right: auto;
     border-collapse: collapse;
-    background-color: rgba(0, 0, 0, 0.005);
 }
 
 table.customTable thead {
     top: 0;
-    z-index: 99;
     background: #fff;
     box-shadow: 0 0.15rem 0.15rem -0.15rem rgba(0, 0, 0, 0.5);
 }
@@ -30,11 +25,11 @@ table.customTable td {
 }
 
 table.customTable td:first-child {
-    padding-left: 0.25rem;
+    padding-left: 0.1rem;
 }
 
-table.customTable td:last-child {
-    padding-right: 0.25rem;
+table.customTable td.buttonContainer {
+    padding: 0.1rem;
 }
 
 table.customTable tr:nth-child(2n) td {
@@ -43,6 +38,10 @@ table.customTable tr:nth-child(2n) td {
 
 table.customTable tr:hover:not(thead > tr) {
     box-shadow:inset 0 0 0.15rem rgba(0, 0, 0, 0.5);
+}
+
+#flexContainer button[type="submit"], td.buttonContainer {
+    padding: .25rem;
 }
 
 tr[onclick] {

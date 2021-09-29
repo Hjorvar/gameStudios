@@ -1,47 +1,67 @@
 #gameContainer {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr auto 560px;
-    grid-template-rows:
-        auto
-        [row2-start] 2em [row2-end]
-        auto
-        ;
-    grid-template-areas: 
-    "header header  header"
-    "studio studio   trailer"
-    "info   genre   trailer"
-    "info   addinfo addinfo";
+    position: relative;
     margin: 0 auto;
-    width: 80%;
-}
-#gameContainer #gameName {
-    display: inline-block;
-    grid-area: header;
-    justify-self: center;
-    font-size: 3em;
-    font-weight: bold;
-}
-#gameContainer #gameTrailer {
-    display: inline-block;
-    grid-area: trailer;
-}
-
-#gameContainer #studioName {
-    display: inline-block;
-    grid-area: studio;
-    font-size: 1.5rem;
-    justify-self: center;
+    display: flex;
+    flex-flow: column wrap;
+    flex-direction: column;
+    flex-wrap: wrap;
     align-self: center;
+    justify-self: center;
+    width: 80%;
+    gap: 1rem;
+    padding: 1rem;
 }
 
-#gameContainer #gameGenre {
-    display: inline-block;
-    grid-area: genre;
-    justify-self: end;
-    padding: .25rem 1rem 1rem 1rem;
+#gameContainer #gameName {
+    align-self: stretch;
+    font-size: 1.5rem;
+    align-self: center;
+    text-align: center;
+    margin-bottom: .5rem;
+}
+#gameContainer #gameName span:first-of-type {
+    font-size: 2.5rem;
+    text-shadow: 0 0 .1rem var(--clr_main_light);
 }
 
-#gameContainer #gameInfo{
-    display: inline-block;
+#gameContainer #gameName span {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-right: 1rem;
+    padding-left: .25rem;
+}
+
+#gameContainer #content{
+    width: 100%;
+}
+#gameContainer #content *{
+    padding: .25rem;
+}
+
+#gameContainer #content .innerContainer {
+    display: inline-flex;
+    margin-bottom: .5rem;
+    width: 50%;
+    flex-wrap: wrap;
+
+}
+
+.right {
+    float: right;
+}
+
+#gameContainer .head {
+    display: block;
+    text-align: center;
+}
+
+#gameTrailer,
+#gameTrailer > iframe {
+    position: relative;
+    display: block;
+    max-width: 560px;
+    max-height: 315px;
+    width: auto;
+    height: auto;
+    flex-grow: 4;
 }

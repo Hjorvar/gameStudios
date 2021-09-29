@@ -1,21 +1,12 @@
-html, body {
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    position: relative;
-}
-
 #navbar {
-    position: relative;
     display: block;
     align-items: center;
     background-color: var(--clr_main);/*rgb(59, 73, 102);*/
     box-shadow: 
         0 -0.65rem 0.4rem 0.2rem rgba(0, 0, 0, 0.1) inset,
         0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.3);
-    margin-bottom: .25rem;
+    margin-bottom: 1rem;
+    z-index: 10;
 }
 
 #navbar > ul {
@@ -34,4 +25,31 @@ body {
 li.item {
     color: #fff;
     font-size: 1.2rem;
+}
+.select {
+    display: inline-block;
+    position: relative;
+    padding: auto;
+    min-width: 6em;
+    height: 100%;
+}
+.focus *{
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    border-radius: var(--border_radius_hover);
+}
+.focus {
+    display: inline-block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.select:not(:hover) > .focus {
+    display: none;
 }

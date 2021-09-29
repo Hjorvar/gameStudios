@@ -19,11 +19,11 @@
 }
 
 .customBtn:hover {
-    border-radius: .35rem;
+    border-radius: var(--border_radius_hover);
     box-shadow:var(--btn_shadow_hover);
 }
 
-.customBtn:focus {
-    border-radius: .35rem;
+.customBtn:focus, .customBtn:active {
+    border-radius: var(--border_radius_hover);
     box-shadow:var(--btn_shadow_focus);
 }
