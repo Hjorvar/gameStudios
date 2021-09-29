@@ -8,7 +8,7 @@ const router = express.Router();
 
 function createGame(dbFile, name, year, month, idStudio, ytTrailer, info){
   const game = [name, year, month, idStudio, ytTrailer, info];
-  const sql = 'INSERT INTO games(name, year, month, idStudio, ytTrailer, info) VALUES (?, ?, ?, ?, ?, ?)';
+  const sql = 'INSERT INTO games(name, year, month, idStudio, youtubeTrailer, info) VALUES (?, ?, ?, ?, ?, ?)';
   const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
       return console.error(colors.red(err.message));
