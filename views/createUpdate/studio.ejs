@@ -35,24 +35,24 @@
       </div><% } else { %>
     <form action="/updateStudio" method="POST">
       <div class="formItem">
-        <input type="text" id="studioName" class="formInput" name="studioName" value="<%= row.name %>" placeholder=" ">
+        <input type="text" id="studioName" class="formInput" name="studioName" value="<%= studio.name %>" placeholder=" ">
         <label for="studioName">Name:</label>
       </div>
-      <input type="hidden" name="idStudio" value="<%= row.id %>" placeholder=" ">
+      <input type="hidden" name="idStudio" value="<%= studio.id %>" placeholder=" ">
       <div class="formItem">
-        <input type="text" class="formInput" name="city" id="city" value="<%= row.city %>" placeholder=" ">
+        <input type="text" class="formInput" name="city" id="city" value="<%= studio.city %>" placeholder=" ">
         <label for="city">City:</label>
       </div>
       <div class="formItem">
-        <input type="text" class="formInput" name="country" id="country" value="<%= row.country %>" placeholder=" ">
+        <input type="text" class="formInput" name="country" id="country" value="<%= studio.country %>" placeholder=" ">
         <label for="country">Country:</label>
       </div>
       <div class="formItem">
-        <input type="text" class="formInput" name="staffAmmount" id="staffAmmount" value="<%= row.staffAmmount %>" placeholder=" ">
+        <input type="text" class="formInput" name="staffAmmount" id="staffAmmount" value="<%= studio.staffAmmount %>" placeholder=" ">
         <label for="staffAmmount">Staff:</label>
       </div>
       <div class="formItem">
-        <input type="text" class="formInput" name="founded" id="founded" value="<%= row.founded %>" placeholder=" ">
+        <input type="text" class="formInput" name="founded" id="founded" value="<%= studio.founded %>" placeholder=" ">
         <label for="founded">Founded:</label>
       </div>
     <% } %>

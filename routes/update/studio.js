@@ -3,6 +3,7 @@ const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
 const colors = require('colors');
+const findStudio = require('../../db/findStudio');
 
 const router = express.Router();
 
@@ -39,32 +40,8 @@ function updateStudio(dbFile, id, name, staffAmmount, city, country, founded){
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  const idStudio = req.query.idStudio;
-  const sql = `SELECT * FROM studios WHERE id = ?`;
-
-  const db = new sqlite3.Database(dbFile, (err) => {
-    if (err) {
-      return console.error(colors.red(err.message));
-    }
-    console.log('Connected to the SQLite database'.green);
-    return true;
-  });
-
-  db.get(sql, [idStudio], (err, row) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    res.render('createUpdate/studio', { title: 'Update', action: 'update', row });
-    return row
-  });
-
-  db.close((err) => {
-    if (err) {
-      return console.error(colors.red(err.message));
-    }
-    console.log('Close the database connection'.green);
-    return true;
-  });
+  const studio = findStudio(dbFile, req.query.idStudio)
+  res.render('createUpdate/studio', { title: 'Update', action: 'update', studio });
 });
 
 router.post('/', (req, res) => {
