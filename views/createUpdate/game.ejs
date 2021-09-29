@@ -36,7 +36,28 @@
       <div class="formItem">
         <input type="text" class="formInput" name="info" id="info" placeholder=" ">
         <label for="info">Info:</label>
-      </div><% } else { %>
+      </div>
+      <div>
+        <select>
+          <% for (let i = 0; i < studios.length; i += 1){ %>
+            <option value="<%= studios[i].id %>"><%= studios[i].name %></option>
+          <% } %>
+        </select>
+      </div>
+      <div>
+        <select>
+          <% for (let i = 0; i < publishers.length; i += 1){ %>
+            <option value="<%= publishers[i].id %>"><%= publishers[i].name %></option>
+          <% } %>
+        </select>
+      </div>
+      <div>
+        <% for (let i = 0; i < genres.length; i += 1){ %>
+        <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
+        <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
+        <% } %>
+      </div>
+      <% } else { %>
     <form action="/updateGame" method="POST">
       <div class="formItem">
         <input type="text" id="gameName" class="formInput" name="gameName" value="<%= row.name %>" placeholder=" ">
@@ -62,6 +83,21 @@
       <div class="formItem">
         <input type="text" class="formInput" name="info" id="info" value="<%= row.info %>" placeholder=" ">
         <label for="info">Info:</label>
+      </div>
+      <div>
+        <br>
+        <select>
+          <% for (let i = 0; i < studios.length; i += 1){ %>
+            <option value="<%= studios[i].id %>"><%= studios[i].name %></option>
+          <% } %>
+        </select>
+      </div>
+      <br>
+      <div>
+        <% for (let i = 0; i < genres.length; i += 1){ %>
+        <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
+        <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
+        <% } %>
       </div>
     <% } %>
       <button type="submit" id="submitBtn" class="customBtn"><%= action %></button>
