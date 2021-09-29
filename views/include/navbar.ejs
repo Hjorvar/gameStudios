@@ -5,7 +5,7 @@
 		<a href="/games"><li class="item customBtn">Games</li></a>
 		<a href="/games?idPlatform=PS"><li class="item customBtn">Playstation</li></a>
 		<a href="/games?idPlatform=Xbox"><li class="item customBtn">Xbox</li></a>
-		<% if(username != 'none') { %>
+		<% try { if(username != 'none') { %>
 			<div id="customSelect" class="item customBtn select">
 				<p>Create</p>
 				<div class="focus">
@@ -19,6 +19,6 @@
 				</ul>
 				</div>
 			</div>
-		<% } %>
+		<% }} catch (e) {} %>
 	</ul>
 </div>
