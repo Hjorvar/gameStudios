@@ -9,7 +9,6 @@ const router = express.Router();
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  console.log('mamma');
   if (req.session.loggedin) {
     res.render('createUpdate/platform', { title: 'Create', action: 'create' });
 	} else {
@@ -19,7 +18,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log('pabbi');
   if (req.session.loggedin) {
     createPlatform(dbFile, req.body.platformName);
     res.render('createUpdate/platform', { title: 'Create', action: 'create' });
