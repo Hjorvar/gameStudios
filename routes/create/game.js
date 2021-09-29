@@ -36,8 +36,65 @@ function createGame(dbFile, name, year, month, idStudio, ytTrailer, info){
 
 // get studioTemplate page
 router.get('/', (req, res) => {
+
   if (req.session.loggedin) {
-    res.render('createUpdate/game', { title: 'Create', action: 'create' });
+    const sql = 'SELECT id, name FROM studios ORDER BY name';
+    let studios = [];
+    let genres = [];
+    let publishers = [];
+
+    const db = new sqlite3.Database(dbFile, (err) => {
+      if (err) {
+        return console.error(colors.red(err.message));
+      }
+      console.log('Connected to the SQLite database'.green);
+      return true;
+    });
+  
+    db.all(sql, [], (err, rows) => {
+      if (err) {
+        return console.log(colors.red(err.message));
+      }
+      console.log('Reading data from table'.green);
+      rows.forEach((row) => {
+        studios.push(row);
+      })
+
+      const sql = 'SELECT id, name FROM genres ORDER BY name';
+
+      db.all(sql, [], (err, rows) => {
+        if (err) {
+          return console.log(colors.red(err.message));
+        }
+        console.log('Reading data from table'.green);
+        rows.forEach((row) => {
+          genres.push(row);
+        });
+
+        const sql = 'SELECT id, name FROM publishers ORDER BY name';
+  
+        db.all(sql, [], (err, rows) => {
+          if (err) {
+            return console.log(colors.red(err.message));
+          }
+          console.log('Reading data from table'.green);
+          rows.forEach((row) => {
+            publishers.push(row);
+          });
+
+          res.render('createUpdate/game', { title: 'Create', action: 'create', studios, genres, publishers });
+          return true;
+        });
+      });
+    });
+
+    db.close((err) => {
+      if (err) {
+        return console.error(colors.red(err.message));
+      }
+      console.log('Close the database connection'.green);
+      return true;
+    });
   } else {
     console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
