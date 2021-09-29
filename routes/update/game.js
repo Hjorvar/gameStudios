@@ -8,7 +8,7 @@ const router = express.Router();
 
 function updateGame(dbFile, id, name, year, month, idStudio, ytTrailer, info){
   const game = [name, year, month, idStudio, ytTrailer, info, id];
-  const sql = 'UPDATE studios SET name = ?, year = ?, month = ?, idStudio = ?, ytTrailer = ?, info = ? WHERE id = ?';
+  const sql = 'UPDATE games SET name = ?, year = ?, month = ?, idStudio = ?, youtubeTrailer = ?, info = ? WHERE id = ?';
   const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
       return console.error(colors.red(err.message));
@@ -21,7 +21,7 @@ function updateGame(dbFile, id, name, year, month, idStudio, ytTrailer, info){
     if (err) {
       return console.log(colors.red(err.message));
     }
-    console.log(colors.green(studio) + ' added to DB');
+    console.log(colors.green(game) + ' added to DB');
     return true;
   });
 
