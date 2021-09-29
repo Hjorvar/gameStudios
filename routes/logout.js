@@ -1,5 +1,4 @@
 const express = require('express');
-const colors = require('colors');
 
 const router = express.Router();
 
