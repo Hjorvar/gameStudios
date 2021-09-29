@@ -70,7 +70,7 @@ INSERT INTO platforms (name)
 VALUES ('PC');
 
 INSERT INTO gamePlatforms
-VALUES (10, 6), (10, 1);
+VALUES (11, 1), (11, 4), (11, 6), (11, 7);
 
 DELETE FROM gamePlatforms WHERE idPlatform = 16;
 
@@ -111,3 +111,26 @@ INSERT INTO users (username, password)
 VALUES ('Hjorvar', 'kennari'), ('Ingvar', 'oli'), ('Brynjar', 'yngstur') ;
 
 SELECT username FROM users WHERE username = 'Hjorvar' AND password = 'kennari';
+
+DELETE FROM games WHERE id = 11;
+
+SELECT games.id, games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName 
+FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame 
+INNER JOIN studios ON games.idStudio = studios.id 
+INNER JOIN genres ON gameGenres.idGenre = genres.id 
+INNER JOIN gamePlatforms ON games.id = gamePlatforms.idGame 
+INNER JOIN platforms ON gamePlatforms.idPlatform = platforms.id 
+WHERE 1 = 1 
+GROUP BY games.id 
+ORDER BY games.name;
+
+
+SELECT DISTINCT games.id, games.name AS name, studios.name AS studioName, GROUP_CONCAT(genres.name) AS genresName 
+FROM games INNER JOIN gameGenres ON games.id = gameGenres.idGame 
+INNER JOIN studios ON games.idStudio = studios.id 
+INNER JOIN genres ON gameGenres.idGenre = genres.id
+INNER JOIN gamePlatforms ON games.id = gamePlatforms.idGame 
+INNER JOIN platforms ON gamePlatforms.idPlatform = platforms.id 
+WHERE 1 = 1 AND games.id = 11 
+GROUP BY games.id, gamePlatforms.idPlatform 
+ORDER BY games.name;
