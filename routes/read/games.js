@@ -16,12 +16,6 @@ router.get('/', (req, res) => {
 
   const genres = readGenres(dbFile);
   let where = 'WHERE 1 = 1';
-  if(req.query.idPlatform == "Xbox"){
-    where += ' AND platforms.name = "Xbox Series" OR platforms.name = "Xbox One"';
-  }
-  if(req.query.idPlatform == "PS"){
-    where += ' AND platforms.name = "Playstation 5" or platforms.name = "Playstation 4"';
-  }
   if(req.query.genres){
     const tempGenres = req.query.genres;
     where += ' AND (';
