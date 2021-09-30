@@ -36,8 +36,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   updateGame(dbFile, req.body.idGame, req.body.gameName,req.body.info ,req.body.ytTrailer ,req.body.year, req.body.month, req.body.idStudio);
   updateGamePublisher(dbFile, req.body.idGame, req.body.publishers)
-  deleteGameGenre(req.body.idGame);
-  deleteGamePlatforms(req.body.idGame)
+  deleteGameGenre(dbFile, req.body.idGame);
+  deleteGamePlatforms(dbfile, req.body.idGame)
   const genres = req.body.genres;
   for (let i = 0; i < genres.length; i += 1){
     createGameGenre(dbFile, req.body.idGame, genres[i]);
