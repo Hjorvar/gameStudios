@@ -14,3 +14,7 @@
 .cur_default {
     cursor: default;
 }
+
+.disable-select {
+    user-select: none; /* All modern browsers */
+}
