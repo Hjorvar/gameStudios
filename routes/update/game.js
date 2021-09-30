@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
     const gameGenres = findGameGenre(dbFile, req.query.idGame);
     const gamePlatforms = findGamePlatforms(dbFile, req.query.idGame);
     console.log(game);
-    res.render('createUpdate/game', { title: 'Update', action: 'Update', game, genres, studios, platforms, publishers, gameGenres, gamePlatforms });
+    res.render('createUpdate/game', { title: `Update ${game.name}`, action: 'Update', game, genres, studios, platforms, publishers, gameGenres, gamePlatforms });
   } else {
     console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );

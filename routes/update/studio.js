@@ -9,7 +9,7 @@ const router = express.Router();
 // get studioTemplate page
 router.get('/', (req, res) => {
   const studio = findStudio(dbFile, req.query.idStudio)
-  res.render('createUpdate/studio', { title: 'Update', action: 'update', studio });
+  res.render('createUpdate/studio', { title: `Update ${studio.name}`, action: 'update', studio });
 });
 
 router.post('/', (req, res) => {

@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
     const studios = readStudios(dbFile);
     const platforms = readPlatforms(dbFile); 
     const publishers = readPublishers(dbFile);
-    res.render('createUpdate/game', { title: 'Create', action: 'create', studios, genres, platforms, publishers });
+    res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers });
   } else {
     console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
       createGamePlatforms(dbFile, idGame, platforms[i]);
     }
 
-    res.render('createUpdate/game', { title: 'Create', action: 'create' });
+    res.render('createUpdate/game', { title: 'Create Game', action: 'create' });
   } else {
     console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
