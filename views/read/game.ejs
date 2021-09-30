@@ -22,7 +22,10 @@
 					<%= game.genresName %>
 				</div>
 				<div id="gameTrailer">
-					<%- game.trailer %>
+					<iframe width="560" height="315" src="<%= game.trailer %>"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
 				</div>
 			</div>
 			<h2 class="head">Information about the game</h2>
