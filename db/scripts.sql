@@ -136,4 +136,5 @@ GROUP BY games.id, gamePlatforms.idPlatform
 ORDER BY games.name;
 
 
-DELETE FROM games WHERE id = 12;
+UPDATE games SET idStudio = 25 WHERE id = 10; 
+

@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const createGameGenre = require('../../db/create/createGameGenre');
+const createGamePlatforms = require('../../db/create/createGamePlatforms');
 const deleteGameGenre = require('../../db/delete/deleteGameGenre');
 const deleteGamePlatforms = require('../../db/delete/deleteGamePlatforms');
 const findGame = require('../../db/read/findGame');
@@ -34,10 +36,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  updateGame(dbFile, req.body.idGame, req.body.gameName,req.body.info ,req.body.ytTrailer ,req.body.year, req.body.month, req.body.idStudio);
+  updateGame(dbFile, req.body.idGame, req.body.gameName,req.body.info ,req.body.ytTrailer ,req.body.year, req.body.month, req.body.studios);
   updateGamePublisher(dbFile, req.body.idGame, req.body.publishers)
   deleteGameGenre(dbFile, req.body.idGame);
-  deleteGamePlatforms(dbfile, req.body.idGame)
+  deleteGamePlatforms(dbFile, req.body.idGame)
   const genres = req.body.genres;
   for (let i = 0; i < genres.length; i += 1){
     createGameGenre(dbFile, req.body.idGame, genres[i]);
