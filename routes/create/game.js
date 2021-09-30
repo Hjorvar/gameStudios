@@ -18,13 +18,11 @@ const router = express.Router();
 router.get('/', (req, res) => {
 
   if (req.session.loggedin) {
-
     const genres = readGenres(dbFile);
     const studios = readStudios(dbFile);
     const platforms = readPlatforms(dbFile); 
     const publishers = readPublishers(dbFile);
     res.render('createUpdate/game', { title: 'Create', action: 'create', studios, genres, platforms, publishers });
-
   } else {
     console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );

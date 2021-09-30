@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
+const readGenres = require('../../db/read/readGenres');
+const readStudios = require('../../db/read/readStudios');
+const readPlatforms = require('../../db/read/readPlatforms');
+const readPublishers = require('../../db/read/readPublishers');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
-const colors = require('colors');
 
 const router = express.Router();
 
@@ -36,32 +39,42 @@ function updateGame(dbFile, id, name, year, month, idStudio, ytTrailer, info){
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  const idGame = req.query.idGame;
-  const sql = `SELECT * FROM games WHERE id = ?`;
+  if (req.session.loggedin) {
+    const genres = readGenres(dbFile);
+    const studios = readStudios(dbFile);
+    const platforms = readPlatforms(dbFile); 
+    const publishers = readPublishers(dbFile);
+    res.render('createUpdate/game', { title: 'Create', action: 'create', studios, genres, platforms, publishers });
+  } else {
+    console.log('einhver reyndi að koma hingað sem má það ekki'.red);
+    res.redirect(301, '/' );
+	}
+  // const idGame = req.query.idGame;
+  // const sql = `SELECT * FROM games WHERE id = ?`;
 
-  const db = new sqlite3.Database(dbFile, (err) => {
-    if (err) {
-      return console.error(colors.red(err.message));
-    }
-    console.log('Connected to the SQLite database'.green);
-    return true;
-  });
+  // const db = new sqlite3.Database(dbFile, (err) => {
+  //   if (err) {
+  //     return console.error(colors.red(err.message));
+  //   }
+  //   console.log('Connected to the SQLite database'.green);
+  //   return true;
+  // });
 
-  db.get(sql, [idGame], (err, row) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    res.render('createUpdate/game', { title: 'Update', action: 'update', row });
-    return row
-  });
+  // db.get(sql, [idGame], (err, row) => {
+  //   if (err) {
+  //     return console.error(err.message);
+  //   }
+  //   res.render('createUpdate/game', { title: 'Update', action: 'update', row });
+  //   return row
+  // });
 
-  db.close((err) => {
-    if (err) {
-      return console.error(colors.red(err.message));
-    }
-    console.log('Close the database connection'.green);
-    return true;
-  });
+  // db.close((err) => {
+  //   if (err) {
+  //     return console.error(colors.red(err.message));
+  //   }
+  //   console.log('Close the database connection'.green);
+  //   return true;
+  // });
 });
 
 router.post('/', (req, res) => {
