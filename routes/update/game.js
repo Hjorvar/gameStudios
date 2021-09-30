@@ -36,16 +36,16 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   updateGame(dbFile, req.body.idGame, req.body.gameName,req.body.info ,req.body.ytTrailer ,req.body.year, req.body.month, req.body.idStudio);
   updateGamePublisher(dbFile, req.body.idGame, req.body.publishers)
-  deleteGameGenre(idGame);
-  deleteGamePlatforms(idGame)
+  deleteGameGenre(req.body.idGame);
+  deleteGamePlatforms(req.body.idGame)
   const genres = req.body.genres;
   for (let i = 0; i < genres.length; i += 1){
-    createGameGenre(dbFile, idGame, genres[i]);
+    createGameGenre(dbFile, req.body.idGame, genres[i]);
   }
   
   const platforms = req.body.platforms;
   for (let i = 0; i < platforms.length; i += 1){
-    createGamePlatforms(dbFile, idGame, platforms[i]);
+    createGamePlatforms(dbFile, req.body.idGame, platforms[i]);
   }
   res.redirect('/games');
 });
