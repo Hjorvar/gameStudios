@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
-const createStudio = require('../../db/createStudio');
+const createStudio = require('../../db/create/createStudio');
 
 const { runInNewContext } = require('vm'); // einhver að nota þetta? kv. hjörvar
 

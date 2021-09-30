@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const findUser = require('../db/findUser');
+const findUser = require('../db/read/findUser');
 const dbFile = path.join(__dirname, '../db/gameStudios.db');
 
 const router = express.Router();

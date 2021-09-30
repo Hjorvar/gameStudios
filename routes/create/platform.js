@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const createPlatform = require('../../db/createPlatform');
+const createPlatform = require('../../db/create/createPlatform');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
 
 const router = express.Router();

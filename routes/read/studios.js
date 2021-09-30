@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const readStudios = require('../../db/readStudios');
+const readStudios = require('../../db/read/readStudios');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
 
 const router = express.Router();

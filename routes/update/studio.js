@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
-const findStudio = require('../../db/findStudio');
-const updateStudio = require('../../db/updateStudio');
+const findStudio = require('../../db/read/findStudio');
+const updateStudio = require('../../db/update/updateStudio');
 
 const router = express.Router();
 

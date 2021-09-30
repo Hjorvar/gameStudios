@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
-const createGame = require('../../db/createGame');
-const createGameGenre = require('../../db/createGameGenre');
-const createGamePlatforms = require('../../db/createGamePlatforms');
-const createGamePublishers = require('../../db/createGamePublishers');
-const readGenres = require('../../db/readGenres');
-const readStudios = require('../../db/readStudios');
-const readPlatforms = require('../../db/readPlatforms');
-const readPublishers = require('../../db/readPublishers');
+const createGame = require('../../db/create/createGame');
+const createGameGenre = require('../../db/create/createGameGenre');
+const createGamePlatforms = require('../../db/create/createGamePlatforms');
+const createGamePublishers = require('../../db/create/createGamePublishers');
+const readGenres = require('../../db/read/readGenres');
+const readStudios = require('../../db/read/readStudios');
+const readPlatforms = require('../../db/read/readPlatforms');
+const readPublishers = require('../../db/read/readPublishers');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
 
 const router = express.Router();

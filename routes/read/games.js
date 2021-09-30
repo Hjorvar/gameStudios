@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const readGenres = require('../../db/readGenres');
-const readGames = require('../../db/readGames');
+const readGenres = require('../../db/read/readGenres');
+const readGames = require('../../db/read/readGames');
 
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
 
