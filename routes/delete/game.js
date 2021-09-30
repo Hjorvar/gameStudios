@@ -1,48 +1,25 @@
 const express = require('express');
 const path = require('path');
-const sqlite3 = require('sqlite3').verbose();
+const deleteGame = require('../../db/delete/deleteGame');
+const deleteGameGenre = require('../../db/delete/deleteGameGenre');
+const deleteGamePublisher = require('../../db/delete/deleteGamePublisher');
+const deleteGamePlatforms = require('../../db/delete/deleteGamePlatforms');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
-const colors = require('colors');
 
 const router = express.Router();
 
-function createGenre(dbFile, name){
-  const studio = [name];
-  const sql = 'INSERT INTO genres(name) VALUES (?)';
-  const db = new sqlite3.Database(dbFile, (err) => {
-    if (err) {
-      return console.error(colors.red(err.message));
-    }
-    console.log('Connected to the SQLite database'.green);
-    return true;
-  });
-
-  db.run(sql, studio, (err) => {
-    if (err) {
-      return console.log(colors.red(err.message));
-    }
-    console.log(colors.green(studio) + ' added to DB');
-    return true;
-  });
-
-  db.close((err) => {
-    if (err) {
-      return console.error(colors.red(err.message));
-    }
-    console.log('Close the database connection'.green);
-    return true;
-  });
-}
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  res.render('createUpdate/genres', { title: 'Create', action: 'create' });
+  res.redirect('/');
 });
 
 router.post('/', (req, res) => {
-
-  createGenre(dbFile, req.body.genreName);
-  res.json(req.body);
+  deleteGameGenre(dbFile, req.body.idGame);
+  deleteGamePublisher(dbFile, req.body.idGame);
+  deleteGamePlatforms(dbFile, req.body.idGame);
+  deleteGame(dbFile, idGame);
+  res.redirect('/games');
 });
 
 module.exports = router;

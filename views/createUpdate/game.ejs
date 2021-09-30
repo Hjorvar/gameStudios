@@ -62,39 +62,50 @@
       <% } else { %>
     <form action="/updateGame" method="POST">
       <div class="formItem">
-        <input type="text" id="gameName" class="formInput" name="gameName" value="<%= row.name %>" placeholder=" ">
+        <input type="text" id="gameName" class="formInput" name="gameName" value="<%= games.name %>" placeholder=" ">
         <label for="gameName">Name:</label>
       </div>
-      <input type="hidden" name="idGame" value="<%= row.id %>" placeholder=" ">
+      <input type="hidden" name="idGame" value="<%= games.id %>" placeholder=" ">
       <div class="formItem">
-        <input type="text" class="formInput" name="year" id="year" value="<%= row.year %>" placeholder=" ">
+        <input type="text" class="formInput" name="year" id="year" value="<%= games.year %>" placeholder=" ">
         <label for="year">Year:</label>
       </div>
       <div class="formItem">
-        <input type="text" class="formInput" name="month" id="month" value="<%= row.month %>" placeholder=" ">
+        <input type="text" class="formInput" name="month" id="month" value="<%= games.month %>" placeholder=" ">
         <label for="month">Month:</label>
       </div>
       <div class="formItem">
-        <input type="text" class="formInput" name="ytTrailer" id="ytTrailer" value="<%= row.youtubeTrailer %>" placeholder=" ">
+        <input type="text" class="formInput" name="ytTrailer" id="ytTrailer" value="<%= games.youtubeTrailer %>" placeholder=" ">
         <label for="ytTrailer">Youtube trailer link:</label>
       </div>
       <div class="formItem">
-        <input type="text" class="formInput" name="info" id="info" value="<%= row.info %>" placeholder=" ">
+        <input type="text" class="formInput" name="info" id="info" value="<%= games.info %>" placeholder=" ">
         <label for="info">Info:</label>
       </div>
       <div>
-        <br>
-        <select>
+        <select name="studios">
           <% for (let i = 0; i < studios.length; i += 1){ %>
-            <option value="<%= studios[i].id %>"><%= studios[i].name %></option>
+            <option value="<%= studios[i].id  %>" <% if(studios[i].id == games.idStudio) {%> selected <% } %> ><%= studios[i].name %></option>
           <% } %>
         </select>
       </div>
-      <br>
+      <div>
+        <select name="publishers">
+          <% for (let i = 0; i < publishers.length; i += 1){ %>
+            <option value="<%= publishers[i].id %>" <% if(publishers[i].id == games.idPublisher) {%> selected <% } %> ><%= publishers[i].name %></option>
+          <% } %>
+        </select>
+      </div>
       <div>
         <% for (let i = 0; i < genres.length; i += 1){ %>
         <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
         <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
+        <% } %>
+      </div>
+      <div>
+        <% for (let i = 0; i < platforms.length; i += 1){ %>
+        <input type="checkbox" id="<%= platforms[i].id %>" name="platforms" value="<%= platforms[i].id %>">
+        <label for="<%= platforms[i].id %>"> <%= platforms[i].name %></label><br>
         <% } %>
       </div>
     <% } %>

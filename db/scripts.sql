@@ -134,3 +134,6 @@ INNER JOIN platforms ON gamePlatforms.idPlatform = platforms.id
 WHERE 1 = 1 AND games.id = 11 
 GROUP BY games.id, gamePlatforms.idPlatform 
 ORDER BY games.name;
+
+
+DELETE FROM games WHERE id = 12;
