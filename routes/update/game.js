@@ -3,6 +3,8 @@ const path = require('path');
 const deleteGameGenre = require('../../db/delete/deleteGameGenre');
 const deleteGamePlatforms = require('../../db/delete/deleteGamePlatforms');
 const findGame = require('../../db/read/findGame');
+const findGameGenre = require('../../db/read/findGameGenre');
+const findGamePlatforms = require('../../db/read/findGamePlatforms');
 const readGenres = require('../../db/read/readGenres');
 const readStudios = require('../../db/read/readStudios');
 const readPlatforms = require('../../db/read/readPlatforms');
@@ -20,9 +22,11 @@ router.get('/', (req, res) => {
     const studios = readStudios(dbFile);
     const platforms = readPlatforms(dbFile); 
     const publishers = readPublishers(dbFile);
-    const games = findGame(dbFile, req.query.idGame)
-    console.log(games);
-    res.render('createUpdate/game', { title: 'Update', action: 'Update', games, genres, studios, platforms, publishers });
+    const game = findGame(dbFile, req.query.idGame);
+    const gameGenres = findGameGenre(dbFile, req.query.idGame);
+    const gamePlatforms = findGamePlatforms(dbFile, req.query.idGame);
+
+    res.render('createUpdate/game', { title: 'Update', action: 'Update', game, genres, studios, platforms, publishers, gameGenres, gamePlatforms });
   } else {
     console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
