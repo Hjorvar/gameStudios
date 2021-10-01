@@ -49,13 +49,13 @@
       </div>
       <div>
         <% for (let i = 0; i < genres.length; i += 1){ %>
-        <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
+        <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>" <% if(genres[i].id == 18) { %> checked <%}%>>
         <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
         <% } %>
       </div>
       <div>
         <% for (let i = 0; i < platforms.length; i += 1){ %>
-        <input type="checkbox" id="<%= platforms[i].id %>" name="platforms" value="<%= platforms[i].id %>">
+        <input type="checkbox" id="<%= platforms[i].id %>" name="platforms" value="<%= platforms[i].id %>" <% if(platforms[i].id == 9) { %> checked <%}%>>
         <label for="<%= platforms[i].id %>"> <%= platforms[i].name %></label><br>
         <% } %>
       </div>
