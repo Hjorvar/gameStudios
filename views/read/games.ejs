@@ -47,9 +47,15 @@
     <p id="filterHeader">Filters</p>
     <form action="?" method="GET">
       <% for (let i = 0; i < genres.length; i += 1){ %>
+        <% if (genres[i].name != 'Unkown'){ %>
         <input type="checkbox" id="<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
         <label for="<%= genres[i].id %>"> <%= genres[i].name %></label><br>
-        <% } %>
+        <% }} %>
+      <% for (let i = 0; i < platforms.length; i += 1){ %>
+        <% if (platforms[i].name != 'Unkown'){ %>
+        <input type="radio" id="<%= platforms[i].id %>" name="platforms" value="<%= platforms[i].id %>">
+        <label for="<%= platforms[i].id %>"> <%= platforms[i].name %></label><br>
+        <% }} %>
         <span id="sliderValue"></span><br>
         <input type="range" min="2015" max="2030" value="2015" id="sliderMin" name="sliderMin">
         <input type="range" min="2015" max="2030" value="2030" id="sliderMax" name="sliderMax">
