@@ -15,16 +15,18 @@ router.get('/', (req, res) => {
     username = req.session.username;
 	}
 
-
-
   let where = 'WHERE 1 = 1';
+  let search = [];
+
   if(req.query.genres){
     const tempGenres = req.query.genres;
     where += ' AND (';
     for (let i = 0; i < tempGenres.length; i += 1){
-      where +=  ` genres.id = ${tempGenres[i]}`
+      // where +=  ` genres.id = ${tempGenres[i]}`
+      where += ' genres.id = ?';
+      search.push(tempGenres[i])
       if((i + 1) < tempGenres.length){
-        where += ' AND';
+        where += ' OR';
       }
     }
     where += ' )'
@@ -33,7 +35,9 @@ router.get('/', (req, res) => {
     const tempPlatforms = req.query.platforms;
     where += ' AND (';
     for (let i = 0; i < tempPlatforms.length; i += 1){
-      where +=  ` platforms.id = ${tempPlatforms[i]}`
+      // where +=  ` platforms.id = ${tempPlatforms[i]}`
+      where += '?';
+      search.push(tempPlatforms[i]);
       if((i + 1) < tempPlatforms.length){
         where += ' OR';
       }
@@ -42,14 +46,20 @@ router.get('/', (req, res) => {
   }
   if(req.query.sliderMin){
     if (req.query.sliderMin != "2015" || req.query.sliderMax != "2030"){
-      where += ` AND year BETWEEN ${req.query.sliderMin} AND ${req.query.sliderMax}`;
+      // where += ` AND year BETWEEN ${req.query.sliderMin} AND ${req.query.sliderMax}`;
+      where += ' AND year BETWEEN ? AND ? ';
+      search.push(req.query.sliderMin);
+      search.push(req.query.sliderMax);
     }
   }
 
+  if(req.query.search){
+      where += ` AND games.name LIKE ? `;
+      search.push('%'+req.query.search+'%');
+  }
   const genres = readGenres(dbFile);
-  const games = readGames(dbFile, where);
+  const games = readGames(dbFile, where, search);
   const platforms = readPlatforms(dbFile);
-  console.log(platforms);
   res.render('read/games', { title: 'Games', games, genres, username, platforms });
 });
 
