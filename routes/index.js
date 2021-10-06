@@ -9,7 +9,6 @@ const router = express.Router();
 // get index page
 router.get('/', (req, res) => {
   const currentDate = new Date;
-  const games = readGames(dbFile, where, search);
   let where = 'WHERE month IN (?, ?) AND year = ?';
   let search = []
   let username = 'none';
@@ -25,6 +24,7 @@ router.get('/', (req, res) => {
     search.push(currentDate.getMonth() + 2);
     search.push(currentDate.getFullYear());
   }
+  const games = readGames(dbFile, where, search);
   if (req.session.loggedin) {
     username = req.session.username;
 	}
