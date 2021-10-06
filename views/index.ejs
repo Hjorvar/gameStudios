@@ -21,5 +21,36 @@
       <button type="submit">Logout</button>
     </form>
   <% } %>
+  <table class="customTable sandblasted">
+    <thead class="sticky">
+      <tr>
+        <th>Name</th>
+        <th>Studio</th>
+        <th>Genre</th>
+        <% if(username != 'none') { %>
+        <th class="whiteout cur_default">Update</th>
+        <th class="whiteout cur_default">Delete</th>
+        <% } %>
+
+      </tr>
+    </thead>
+    <% for (let i = 0; i < games.length; i += 1){ %>
+      <tr onclick="window.location='/game?idGame=<%= games[i].id %>';">
+        <td><%= games[i].name %></td>
+        <td><%= games[i].studioName %> </td>
+        <td><%= games[i].genresName %> </td>
+      <% if(username != 'none') { %>
+      <td class="buttonContainer">
+        <form action="/updateGame" method="GET"><button type="submit" class="customBtn">Update</button>
+        <input type="hidden" name="idGame" id="idGame" value="<%= games[i].id %>"></form>
+      </td>
+      <td class="buttonContainer">
+        <form action="/deleteGame" method="POST"><button type="submit" class="customBtn">Delete</button>
+          <input type="hidden" name="idGame" id="idGame" value="<%= games[i].id %>"></form>
+      </td>
+      <% } %>
+    </tr>
+    <% } %> 
+  </table>
 </body>
 </html>
