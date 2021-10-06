@@ -25,21 +25,22 @@
         </tr>
       </thead>
       <% for (let i = 0; i < studios.length; i += 1){ %>
-        <tr><td><%= studios[i].name %> </td>
-        <td><%= studios[i].staffAmmount %> </td>
-        <td><%= studios[i].city %> </td>
-        <td><%= studios[i].country %> </td>
-        <% if(username != 'none') { %>
-        <td class="buttonContainer">
-          <form action="/updateStudio" method="GET"><button type="submit" class="customBtn">Update</button>
-          <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
-        </td>
-        <td class="buttonContainer">
-          <form action="/ds" method="POST"><button type="submit" class="customBtn">Delete</button>
-          <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
-        </td>
-        <% } %>
-      </tr> 
+        <tr onclick="window.location='/games?studio=<%= studios[i].id %>';">
+          <td><%= studios[i].name %></td>
+          <td><%= studios[i].staffAmmount %> </td>
+          <td><%= studios[i].city %> </td>
+          <td><%= studios[i].country %> </td>
+          <% if(username != 'none') { %>
+            <td class="buttonContainer">
+              <form action="/updateStudio" method="GET"><button type="submit" class="customBtn">Update</button>
+              <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
+            </td>
+            <td class="buttonContainer">
+              <form action="/ds" method="POST"><button type="submit" class="customBtn">Delete</button>
+              <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
+            </td>
+            <% } %>
+        </tr> 
       <% } %> 
     </table>
     <div id="filterContainer">
