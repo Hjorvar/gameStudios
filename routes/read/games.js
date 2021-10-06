@@ -52,10 +52,13 @@ router.get('/', (req, res) => {
       search.push(req.query.sliderMax);
     }
   }
-
+  if(req.query.studio){
+    where += ' AND studios.id = ?';
+    search.push(req.query.studio);
+  }
   if(req.query.search){
-      where += ` AND games.name LIKE ? `;
-      search.push('%'+req.query.search+'%');
+    where += ` AND games.name LIKE ? `;
+    search.push('%'+req.query.search+'%');
   }
   const genres = readGenres(dbFile);
   const games = readGames(dbFile, where, search);
