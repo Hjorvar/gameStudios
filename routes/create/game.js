@@ -34,18 +34,20 @@ router.post('/', (req, res) => {
     const idGame = createGame(dbFile, req.body.gameName,req.body.studios, req.body.info, req.body.ytTrailer, req.body.year, req.body.month );
     createGamePublishers(dbFile, idGame, req.body.publishers);
     
-    const genres = req.body.genres;
-    for (let i = 0; i < genres.length; i += 1){
-      createGameGenre(dbFile, idGame, genres[i]);
+    const genresPicked = req.body.genres;
+    for (let i = 0; i < genresPicked.length; i += 1){
+      createGameGenre(dbFile, idGame, genresPicked[i]);
     }
     
-    const platforms = req.body.platforms;
-    for (let i = 0; i < platforms.length; i += 1){
-      createGamePlatforms(dbFile, idGame, platforms[i]);
+    const platformsPicked = req.body.platforms;
+    for (let i = 0; i < platformsPicked.length; i += 1){
+      createGamePlatforms(dbFile, idGame, platformsPicked[i]);
     }
-
-    res.render('createUpdate/game', { title: 'Create Game', action: 'create' });
-  } else {
+    const genres = readGenres(dbFile);
+    const studios = readStudios(dbFile);
+    const platforms = readPlatforms(dbFile); 
+    const publishers = readPublishers(dbFile);
+    res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers });  } else {
     console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
   }

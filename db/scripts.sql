@@ -61,7 +61,7 @@ DROP TABLE studios;
 SELECT * FROM studios;
 
 INSERT INTO publishers (name)
-VALUES ('Xbox Game Studios'), ('Bethesda Softworks'), ('Sony Interactive Entertainment');
+VALUES ('SEGA');
 
 INSERT INTO gamePublishers
 VALUES (10,1);
@@ -87,7 +87,7 @@ VALUES ('Avalanche Studios');
 
 DELETE FROM studios WHERE id = 25 OR id = 26;
 
-INSERT INTO genres (name) VALUES ("Unkown");
+INSERT INTO genres (name) VALUES ("Open-world");
 
 INSERT INTO gameGenres (idGame, idGenre)
 VALUES (10, 	1);
@@ -138,3 +138,4 @@ ORDER BY games.name;
 
 UPDATE games SET idStudio = 25 WHERE id = 10; 
 
+DELETE FROM gamePublishers WHERE idGame = 13;
