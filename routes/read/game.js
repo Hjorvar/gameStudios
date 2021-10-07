@@ -9,8 +9,6 @@ const router = express.Router();
 router.get('/', (req, res) => {
   const game = readGame(dbFile, req.query.idGame);
   res.render('read/game', { title: 'Game', game });
-
-
 });
 
 module.exports = router;

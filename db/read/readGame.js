@@ -4,7 +4,7 @@ module.exports = function readStudios(dbFile, idGame) {
   const db = new Database(dbFile, { verbose: console.log });
   const stmt = db.prepare(`
   SELECT games.id, games.name AS name, studios.name AS studioName,
-  GROUP_CONCAT(genres.name) AS genresName,
+  GROUP_CONCAT(genres.name) AS genresName, games.idStudio AS studioId,
   games.youtubeTrailer AS trailer, games.info AS info
   FROM games 
   INNER JOIN gameGenres ON games.id = gameGenres.idGame 
