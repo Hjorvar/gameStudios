@@ -19,8 +19,8 @@
           <th>City</th>
           <th>Country</th>
           <% if(username != 'none') { %>
-          <th class="whiteout cur_default">Update</th>
-          <th class="whiteout cur_default">Delete</th>
+            <th class="whiteout cur_default">Update</th>
+            <th class="whiteout cur_default">Delete</th>
           <% } %>
         </tr>
       </thead>
@@ -39,7 +39,7 @@
               <form action="/ds" method="POST"><button type="submit" class="customBtn">Delete</button>
               <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
             </td>
-            <% } %>
+          <% } %>
         </tr> 
       <% } %> 
     </table>
