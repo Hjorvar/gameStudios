@@ -22,7 +22,6 @@ router.get('/', (req, res) => {
     const tempGenres = req.query.genres;
     where += ' AND (';
     for (let i = 0; i < tempGenres.length; i += 1){
-      // where +=  ` genres.id = ${tempGenres[i]}`
       where += ' genres.id = ?';
       search.push(tempGenres[i])
       if((i + 1) < tempGenres.length){
@@ -31,18 +30,20 @@ router.get('/', (req, res) => {
     }
     where += ' )'
   }
+
   if(req.query.platforms){
-    const tempPlatforms = req.query.platforms;
-    where += ' AND (';
-    for (let i = 0; i < tempPlatforms.length; i += 1){
-      // where +=  ` platforms.id = ${tempPlatforms[i]}`
-      where += '?';
-      search.push(tempPlatforms[i]);
-      if((i + 1) < tempPlatforms.length){
-        where += ' OR';
+    if(req.query.platforms != 'nothing'){
+      const tempPlatforms = req.query.platforms;
+      where += ' AND (';
+      for (let i = 0; i < tempPlatforms.length; i += 1){
+        where += 'platforms.id = ?';
+        search.push(tempPlatforms[i]);
+        if((i + 1) < tempPlatforms.length){
+          where += ' OR';
+        }
       }
+      where += ' )';
     }
-    where += ' )'
   }
   if(req.query.sliderMin){
     if (req.query.sliderMin != "2015" || req.query.sliderMax != "2030"){

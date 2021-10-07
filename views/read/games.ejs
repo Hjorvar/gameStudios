@@ -19,6 +19,8 @@
         <input type="checkbox" id="genre<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">
         <label for="genre<%= genres[i].id %>"> <%= genres[i].name %></label><br>
         <% }} %>
+        <input type="radio" name="platforms" id="nothing" value="nothing" checked>
+        <label for="nothing">All platforms </label><br>
       <% for (let i = 0; i < platforms.length; i += 1){ %>
         <% if (platforms[i].name != 'Unkown'){ %>
         <input type="radio" id="platform<%= platforms[i].id %>" name="platforms" value="<%= platforms[i].id %>">
