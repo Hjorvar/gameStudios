@@ -27,11 +27,9 @@ router.get('/', (req, res) => {
   ];
   if(req.query.orderby){
     orderBy = orderByModes[req.query.orderby - 1];
-    console.log(orderBy.red);
   }
 
   if(req.query.genres){
-
     const tempGenres = req.query.genres;
     where += ' AND (';
     for (let i = 0; i < tempGenres.length; i += 1){
