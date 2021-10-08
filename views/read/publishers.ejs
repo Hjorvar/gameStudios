@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <% for (let i = 0; i < publishers.length; i += 1){ %>
-        <tr onclick="window.location='/games?studio=<%= publishers[i].id %>';">
+        <tr onclick="window.location='/games?publisher=<%= publishers[i].id %>';">
           <td><%= publishers[i].name %></td>
           <td><%= publishers[i].games %></td>
           <% if(username != 'none') { %>

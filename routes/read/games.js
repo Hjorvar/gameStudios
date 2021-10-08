@@ -57,6 +57,10 @@ router.get('/', (req, res) => {
     where += ' AND studios.id = ?';
     search.push(req.query.studio);
   }
+  if(req.query.publisher){
+    where += ' AND gamePublishers.idPublisher = ?';
+    search.push(req.query.publisher);
+  }
   if(req.query.search){
     where += ` AND games.name LIKE ? `;
     search.push('%'+req.query.search+'%');
