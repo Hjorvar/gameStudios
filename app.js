@@ -23,6 +23,7 @@ const logout = require('./routes/logout');
 const readGame = require('./routes/read/game');
 const readGames = require('./routes/read/games');
 const readStudios = require('./routes/read/studios');
+const readPublishers = require('./routes/read/publishers');
 
 const app = express();
 
@@ -64,6 +65,7 @@ app.use('/logout', logout);
 app.use('/game', readGame);
 app.use('/games', readGames);
 app.use('/studios', readStudios);
+app.use('/publishers', readPublishers);
 
 
 

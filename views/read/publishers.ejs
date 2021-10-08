@@ -14,10 +14,7 @@
     <table class="customTable sandblasted">
       <thead class="sticky">
         <tr>
-          <th>Studio</th>
-          <th>Staff</th>
-          <th>City</th>
-          <th>Country</th>
+          <th>Publisher</th>
           <th>Games in DB</th>
           <% if(username != 'none') { %>
             <th class="whiteout cur_default">Update</th>
@@ -25,21 +22,18 @@
           <% } %>
         </tr>
       </thead>
-      <% for (let i = 0; i < studios.length; i += 1){ %>
-        <tr onclick="window.location='/games?studio=<%= studios[i].id %>';">
-          <td><%= studios[i].name %></td>
-          <td><%= studios[i].staffAmmount %> </td>
-          <td><%= studios[i].city %> </td>
-          <td><%= studios[i].country %> </td>
-          <td><%= studios[i].games %></td>
+      <% for (let i = 0; i < publishers.length; i += 1){ %>
+        <tr onclick="window.location='/games?studio=<%= publishers[i].id %>';">
+          <td><%= publishers[i].name %></td>
+          <td><%= publishers[i].games %></td>
           <% if(username != 'none') { %>
             <td class="buttonContainer">
               <form action="/updateStudio" method="GET"><button type="submit" class="customBtn">Update</button>
-              <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
+              <input type="hidden" name="idStudio" id="idStudio" value="<%= publishers[i].id %>"></form>
             </td>
             <td class="buttonContainer">
               <form action="/ds" method="POST"><button type="submit" class="customBtn">Delete</button>
-              <input type="hidden" name="idStudio" id="idStudio" value="<%= studios[i].id %>"></form>
+              <input type="hidden" name="idStudio" id="idStudio" value="<%= publishers[i].id %>"></form>
             </td>
           <% } %>
         </tr> 

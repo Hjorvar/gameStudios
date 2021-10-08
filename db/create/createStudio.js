@@ -4,7 +4,6 @@ module.exports = function createStudio(dbFile, name, city, country, staff, found
   const db = new Database(dbFile);
   const stmt = db.prepare('INSERT INTO studios(name, city, country, staffAmmount, founded) VALUES (?, ?, ?, ?, ?)');
   const studio = stmt.run(name, city, country, staff, founded);
-  console.log(studio.changes);
   db.close();
   return
 }
