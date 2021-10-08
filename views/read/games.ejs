@@ -14,6 +14,13 @@
   <div id="filterContainer">
     <p id="filterHeader">Filters</p>
     <form action="?" method="GET">
+      <label for="orderby">Order by:</label>
+      <select name="orderby" id="orderby">
+        <option value=1>Chronological Oldest-Newest</option>
+        <option value=2>Chronological Newest-Oldest</option>
+        <option value=3>Alphabetical A-Z</option>
+        <option value=4>Alphabetical Z-A</option>
+      </select>
       <% for (let i = 0; i < genres.length; i += 1){ %>
         <% if (genres[i].name != 'Unkown'){ %>
         <input type="checkbox" id="genre<%= genres[i].id %>" name="genres" value="<%= genres[i].id %>">

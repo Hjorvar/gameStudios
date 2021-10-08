@@ -1,6 +1,6 @@
 const Database = require('better-sqlite3');
 
-module.exports = function readGames(dbFile, where, search) {
+module.exports = function readGames(dbFile, where, search, orderBy) {
   const db = new Database(dbFile);
   const stmt = db.prepare(`
     SELECT DISTINCT games.id, games.name AS name, studios.name AS studioName, 
@@ -13,7 +13,7 @@ module.exports = function readGames(dbFile, where, search) {
     INNER JOIN gamePublishers ON games.id = gamePublishers.idGame
     ${where}
     GROUP BY games.id, gamePlatforms.idPlatform 
-    ORDER BY games.year, games.month, games.name;`);
+    ORDER BY ${orderBy};`);
   const games = stmt.all(search);
   db.close();
   return games

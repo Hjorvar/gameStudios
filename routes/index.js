@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
   const currentDate = new Date;
   let where = 'WHERE month IN (?, ?) AND year = ?';
   let search = []
+  const orderBy = "games.year, games.month, games.name ASC";
   let username = 'none';
   search.push(currentDate.getMonth() + 1);
   if (currentDate.getMonth() + 1 == 12) {
@@ -24,7 +25,7 @@ router.get('/', (req, res) => {
     search.push(currentDate.getMonth() + 2);
     search.push(currentDate.getFullYear());
   }
-  const games = readGames(dbFile, where, search);
+  const games = readGames(dbFile, where, search, orderBy);
   if (req.session.loggedin) {
     username = req.session.username;
 	}

@@ -17,8 +17,21 @@ router.get('/', (req, res) => {
 
   let where = 'WHERE 1 = 1';
   let search = [];
+  let orderBy = "games.year, games.month, games.name ASC";
+
+  const orderByModes = [
+    "games.year, games.month, games.name",
+    "games.year DESC, games.month DESC, games.name",
+    "games.name ASC",
+    "games.name DESC"
+  ];
+  if(req.query.orderby){
+    orderBy = orderByModes[req.query.orderby - 1];
+    console.log(orderBy.red);
+  }
 
   if(req.query.genres){
+
     const tempGenres = req.query.genres;
     where += ' AND (';
     for (let i = 0; i < tempGenres.length; i += 1){
@@ -66,7 +79,7 @@ router.get('/', (req, res) => {
     search.push('%'+req.query.search+'%');
   }
   const genres = readGenres(dbFile);
-  const games = readGames(dbFile, where, search);
+  const games = readGames(dbFile, where, search, orderBy);
   const platforms = readPlatforms(dbFile);
   res.render('read/games', { title: 'Games', games, genres, username, platforms });
 });
