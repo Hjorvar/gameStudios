@@ -70,7 +70,7 @@ INSERT INTO platforms (name)
 VALUES ('Unkown');
 
 INSERT INTO gamePlatforms
-VALUES (11, 1), (11, 4), (11, 6), (11, 7);
+VALUES (28, 1), (28, 2), (28, 4), (28, 5), (28, 6);
 
 DELETE FROM gamePlatforms WHERE idPlatform = 16;
 
@@ -90,7 +90,7 @@ DELETE FROM studios WHERE id = 25 OR id = 26;
 INSERT INTO genres (name) VALUES ("Open-world");
 
 INSERT INTO gameGenres (idGame, idGenre)
-VALUES (10, 	1);
+VALUES (28, 	10);
 
 DELETE FROM games WHERE id = 6;
 

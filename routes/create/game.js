@@ -24,7 +24,6 @@ router.get('/', (req, res) => {
     const publishers = readPublishers(dbFile);
     res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers });
   } else {
-    console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
 	}
 });
@@ -35,20 +34,30 @@ router.post('/', (req, res) => {
     createGamePublishers(dbFile, idGame, req.body.publishers);
     
     const genresPicked = req.body.genres;
-    for (let i = 0; i < genresPicked.length; i += 1){
-      createGameGenre(dbFile, idGame, genresPicked[i]);
+    if (Array.isArray(genresPicked)){
+      for (let i = 0; i < genresPicked.length; i += 1){
+        createGameGenre(dbFile, idGame, genresPicked[i]);
+      }
+    } else {
+      createGameGenre(dbFile, idGame, genresPicked);
     }
+  
     
     const platformsPicked = req.body.platforms;
-    for (let i = 0; i < platformsPicked.length; i += 1){
-      createGamePlatforms(dbFile, idGame, platformsPicked[i]);
+  
+    if (Array.isArray(platformsPicked)){
+      for (let i = 0; i < platformsPicked.length; i += 1){
+        createGamePlatforms(dbFile, idGame, platformsPicked[i]);
+      }
+    } else {
+      createGamePlatforms(dbFile, idGame, platformsPicked);
     }
+
     const genres = readGenres(dbFile);
     const studios = readStudios(dbFile);
     const platforms = readPlatforms(dbFile); 
     const publishers = readPublishers(dbFile);
     res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers });  } else {
-    console.log('einhver reyndi að koma hingað sem má það ekki'.red);
     res.redirect(301, '/' );
   }
 });
