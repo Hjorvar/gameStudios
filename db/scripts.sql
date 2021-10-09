@@ -144,11 +144,13 @@ DELETE FROM gamePublishers WHERE idGame = 13;
 SELECT studios.id AS id, studios.name AS name, 
 studios.country AS country, studios.city AS city, 
 studios.staffAmmount AS staffAmmount,
-COUNT(*) AS games 
-FROM studios INNER JOIN games
+COUNT(games.id) AS games 
+FROM studios LEFT OUTER JOIN games
 ON studios.id = games.idStudio
 GROUP BY
 studios.id
 ORDER BY name;
+
+
 
 SELECT id, name, COUNT(*) AS games FROM publishers INNER JOIN gamePublishers ON publishers.id = gamePublishers.idPublisher GROUP BY publishers.id ORDER BY name;
