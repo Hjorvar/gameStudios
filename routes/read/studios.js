@@ -11,8 +11,17 @@ router.get('/', (req, res) => {
   if (req.session.loggedin) {
     username = req.session.username;
 	}
-  
-  const studios = readStudios(dbFile);
+  let where = 'WHERE 1 = 1';
+  let search = [];
+  if(req.query.firstPartyOwner){
+    if(req.query.firstPartyOwner != 'None'){
+      where += ' AND studios.firstPartyOwner = ?';
+      search.push(req.query.firstPartyOwner);
+    }
+  }
+  console.log(where);
+  console.log(search);
+  const studios = readStudios(dbFile, where, search);
   res.render('read/studios', { title: 'Studios', studios, username });
 
 });
