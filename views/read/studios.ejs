@@ -46,5 +46,19 @@
       <% } %> 
     </table>
   </div>
+  <div id="filterContainer">
+    <p id="filterHeader">Show only first party studios for:</p>
+    <form action="?" method="GET">
+        <input type="radio" name="platforms" id="nothing" value="nothing" checked>
+        <label for="nothing">All platforms </label><br>
+        <input type="radio" name="platforms" id="nintendo" value="nintendo" checked>
+        <label for="nothing">Nintendo</label><br>
+        <input type="radio" name="platforms" id="playstation" value="playstation" checked>
+        <label for="nothing">Playstation </label><br>
+        <input type="radio" name="platforms" id="xbox" value="xbox" checked>
+        <label for="nothing">Xbox </label><br>
+        <button type="submit" class="customBtn">Filter</button>
+    </form>
+  </div>
 </body>
 </html>
