@@ -20,8 +20,11 @@ const router = express.Router();
 // get studioTemplate page
 router.get('/', (req, res) => {
   if (req.session.loggedin) {
+    // skýta mix, laga betur seinna
+    const where = 'WHERE 1 = 1';
+    const search = []; 
     const genres = readGenres(dbFile);
-    const studios = readStudios(dbFile);
+    const studios = readStudios(dbFile, where, search);
     const platforms = readPlatforms(dbFile); 
     const publishers = readPublishers(dbFile);
     const game = findGame(dbFile, req.query.idGame);
