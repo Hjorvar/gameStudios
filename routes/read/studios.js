@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   if (req.session.loggedin) {
     username = req.session.username;
 	}
-
+  
   const studios = readStudios(dbFile);
   res.render('read/studios', { title: 'Studios', studios, username });
 

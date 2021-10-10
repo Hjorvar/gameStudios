@@ -6,6 +6,7 @@ module.exports = function readStudios(dbFile) {
     SELECT studios.id AS id, studios.name AS name, 
     studios.country AS country, studios.city AS city, 
     studios.staffAmmount AS staffAmmount,
+    studios.firstPartyOwner AS owner,
     COUNT(games.id) AS games 
     FROM studios LEFT OUTER JOIN games
     ON studios.id = games.idStudio

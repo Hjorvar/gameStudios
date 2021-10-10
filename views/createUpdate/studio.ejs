@@ -33,6 +33,14 @@
         <input type="text" class="formInput" name="founded" id="founded" placeholder=" ">
         <label for="founded" class="disable-select">Founded:</label>
       </div>
+      <div class="formItem">
+        <select name="firstPartyOwner">
+            <option value="None" selected>None</option>
+            <option value="Nintendo" >Nintendo</option>
+            <option value="Playstation">Playstation</option>
+            <option value="Xbox">Xbox</option>
+        </select>
+      </div>
   <% } else { %>
     <form action="/updateStudio" method="POST">
       <div class="formItem">
@@ -55,6 +63,14 @@
       <div class="formItem">
         <input type="text" class="formInput" name="founded" id="founded" value="<%= studio.founded %>" placeholder=" ">
         <label for="founded" class="disable-select">Founded:</label>
+      </div>
+      <div class="formItem">
+        <select name="firstPartyOwner">
+            <option value="None" <% if(studio.firstPartyOwner == 'None'){%>selected <%} %> >None</option>
+            <option value="Nintendo" <% if(studio.firstPartyOwner == 'Nintendo'){%>selected <%} %>>Nintendo</option>
+            <option value="Playstation" <% if(studio.firstPartyOwner == 'Playstation'){%>selected <%} %>>Playstation</option>
+            <option value="Xbox" <% if(studio.firstPartyOwner == 'Xbox'){%>selected <%} %>>Xbox</option>
+        </select>
       </div>
   <% } %>
   <button type="submit" id="submitBtn" class="customBtn"><%= action %></button>

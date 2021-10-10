@@ -154,3 +154,5 @@ ORDER BY name;
 
 
 SELECT id, name, COUNT(*) AS games FROM publishers INNER JOIN gamePublishers ON publishers.id = gamePublishers.idPublisher GROUP BY publishers.id ORDER BY name;
+
+ALTER TABLE studios ADD COLUMN firstPartyOwner NOT NULL DEFAULT 'NONE';
