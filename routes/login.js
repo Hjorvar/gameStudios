@@ -15,7 +15,6 @@ router.post('/', (req, res) => {
 
   // const user = [req.body.user, req.body.password];
   const user = findUser(dbFile, req.body.user, req.body.password)
-  console.log(user)
   if(user){
     req.session.loggedin = true;
     req.session.username = user.username;
