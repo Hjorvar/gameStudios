@@ -18,8 +18,12 @@ const router = express.Router();
 router.get('/', (req, res) => {
 
   if (req.session.loggedin) {
+    // skýta mix, laga betur seinna
+    const where = 'WHERE 1 = 1';
+    const search = []; 
+
     const genres = readGenres(dbFile);
-    const studios = readStudios(dbFile);
+    const studios = readStudios(dbFile, where, search);
     const platforms = readPlatforms(dbFile); 
     const publishers = readPublishers(dbFile);
     res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers });
