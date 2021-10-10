@@ -2,12 +2,16 @@ div#customForm {
     display: flex;
     justify-content: space-around;
     margin-top: 1.5em;
+    width: 60%;
+    margin: 0 auto;
 }
 
 #customForm > form{
     display: inline-grid;
     grid-template-columns: 1em 1fr 1em;
     row-gap: .75em;
+    width: 100%;
+    justify-items: center;
 }
 
 .formItem {
@@ -34,7 +38,7 @@ div#customForm {
     font-size: inherit;
     outline: none;
 }
-.formItem label{
+.formItem input[type=text] ~ label{
     position: absolute;
     left: 1rem;
     top: 0.4rem;
@@ -59,11 +63,21 @@ div#customForm {
 .formItem input:hover ~ label {
     color: var(--clr_main_light);
 }
-.formItem input:focus ~ label,
-.formItem input:not(:placeholder-shown).formInput:not(:focus) ~ label {
+.formItem input[type=text]:focus ~ label,
+.formItem input[type=text]:not(:placeholder-shown).formInput:not(:focus) ~ label {
     top: -0.5rem;
     left: 0.8rem;
     font-size: 0.8rem;
-    background-color: var(--bg_color);
-    box-shadow: 0 0 0.1rem 0.1rem #fff ;
+    background-color: var(--clr_main_xxlight);
+    box-shadow: 0 0 0.1rem 0.1rem var(--clr_main_xxlight) ;
+}
+
+.subgrid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat( auto-fit, minmax(25%,1fr));
+    justify-items: start;
+}
+.subgrid .subgridItem {
+    display: inline-block;
 }
