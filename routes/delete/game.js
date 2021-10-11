@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
   deleteGameGenre(dbFile, req.body.idGame);
   deleteGamePublisher(dbFile, req.body.idGame);
   deleteGamePlatforms(dbFile, req.body.idGame);
-  deleteGame(dbFile, idGame);
+  deleteGame(dbFile, req.body.idGame);
   res.redirect('/games');
 });
 

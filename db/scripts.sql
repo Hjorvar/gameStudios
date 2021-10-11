@@ -70,9 +70,8 @@ INSERT INTO platforms (name)
 VALUES ('Unkown');
 
 INSERT INTO gamePlatforms
-VALUES (28, 1), (28, 2), (28, 4), (28, 5), (28, 6);
-
-DELETE FROM gamePlatforms WHERE idPlatform = 16;
+VALUES (28, 1), (28, 2), (28, 4), (28, 5), (28, 6)
+DELETE FROM games WHERE id = 30;
 
 INSERT INTO games 
 (name, estReleaseYear, idStudio, info, youtubeTrailer)
