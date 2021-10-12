@@ -4,7 +4,7 @@
 			<tr>
 				<th>Name</th>
 				<th>Studio</th>
-				<th>Genre</th>
+				<th class="mHide">Genre</th>
 				<% if(username != 'none') { %>
 					<th class="whiteout cur_default">Update</th>
 					<th class="whiteout cur_default">Delete</th>
@@ -15,7 +15,7 @@
 			<tr onclick="window.location='/game?idGame=<%= games[i].id %>';">
 				<td><%= games[i].name %></td>
 				<td><%= games[i].studioName %> </td>
-				<td><%= games[i].genresName %> </td>
+				<td class="mHide"><%= games[i].genresName %> </td>
 				<% if(username != 'none') { %>
 					<td class="buttonContainer">
 						<form action="/updateGame" method="GET"><button type="submit" class="customBtn">Update</button>

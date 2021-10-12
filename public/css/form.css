@@ -9,7 +9,7 @@ div#customForm {
 #customForm > form{
     display: inline-grid;
     grid-template-columns: 1em 1fr 1em;
-    row-gap: .75em;
+    row-gap: 1.2em;
     width: 100%;
     justify-items: center;
 }
@@ -38,9 +38,9 @@ div#customForm {
     font-size: inherit;
     outline: none;
 }
-.formItem input[type=text] ~ label{
+.formItem input.textInput ~ label{
     position: absolute;
-    left: 1rem;
+    left: .85rem;
     top: 0.4rem;
     padding: 0 .2rem;
     color: var(--clr_main_xdark);
@@ -59,17 +59,15 @@ div#customForm {
 .formItem input:focus{
     border-color: rgb(68, 193, 231);
 }
-.formItem input:focus ~ label,
-.formItem input:hover ~ label {
+.formItem input.textInput:focus ~ label,
+.formItem input.textInput:hover ~ label {
     color: var(--clr_main_light);
 }
-.formItem input[type=text]:focus ~ label,
-.formItem input[type=text]:not(:placeholder-shown).formInput:not(:focus) ~ label {
-    top: -0.5rem;
-    left: 0.8rem;
+.formItem input.textInput:focus ~ label,
+.formItem input.textInput:not(:placeholder-shown).formInput:not(:focus) ~ label {
+    top: -1rem;
+    left: 0.4rem;
     font-size: 0.8rem;
-    background-color: var(--clr_main_xxlight);
-    box-shadow: 0 0 0.1rem 0.1rem var(--clr_main_xxlight) ;
 }
 
 .subgrid {

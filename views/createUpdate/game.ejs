@@ -14,23 +14,23 @@
     <% if (action == 'create') { %>
       <form action="/createGame" method="POST">
         <div class="formItem">
-          <input type="text" class="formInput" id="gameName" class="formInput" name="gameName" placeholder=" ">
+          <input type="text" class="formInput textInput" id="gameName" class="formInput" name="gameName" placeholder=" ">
           <label for="gameName" class="disable-select">Name:</label>
         </div>
         <div class="formItem">
-          <input type="text" class="formInput" name="year" id="year" placeholder=" ">
+          <input type="text" class="formInput textInput" name="year" id="year" placeholder=" ">
           <label for="year" class="disable-select">Year:</label>
         </div>
         <div class="formItem">
-          <input type="text" class="formInput" name="month" id="month" placeholder=" ">
+          <input type="text" class="formInput textInput" name="month" id="month" placeholder=" ">
           <label for="month" class="disable-select">Month:</label>
         </div>
         <div class="formItem">
-          <input type="text" class="formInput" name="ytTrailer" id="ytTrailer" placeholder=" ">
+          <input type="text" class="formInput textInput" name="ytTrailer" id="ytTrailer" placeholder=" ">
           <label for="ytTrailer" class="disable-select">Youtube trailer link:</label>
         </div>
         <div class="formItem">
-          <input type="text" class="formInput" name="info" id="info" placeholder=" ">
+          <input type="text" class="formInput textInput" name="info" id="info" placeholder=" ">
           <label for="info" class="disable-select">Info:</label>
         </div>
         <div class="formItem">
@@ -62,24 +62,24 @@
     <% } else { %>
       <form action="/updateGame" method="POST">
         <div class="formItem">
-          <input type="text" id="gameName" class="formInput" name="gameName" value="<%= game.name %>" placeholder=" ">
+          <input type="text" id="gameName" class="formInput textInput" name="gameName" value="<%= game.name %>" placeholder=" ">
           <label for="gameName" class="disable-select">Name:</label>
         </div>
         <input type="hidden" name="idGame" value="<%= game.id %>" placeholder=" ">
         <div class="formItem">
-          <input type="text" class="formInput" name="year" id="year" value="<%= game.year %>" placeholder=" ">
+          <input type="text" class="formInput textInput" name="year" id="year" value="<%= game.year %>" placeholder=" ">
           <label for="year" class="disable-select">Year:</label>
         </div>
         <div class="formItem">
-          <input type="text" class="formInput" name="month" id="month" value="<%= game.month %>" placeholder=" ">
+          <input type="text" class="formInput textInput" name="month" id="month" value="<%= game.month %>" placeholder=" ">
           <label for="month" class="disable-select">Month:</label>
         </div>
         <div class="formItem">
-          <input type="text" class="formInput" name="ytTrailer" id="ytTrailer" value="<%= game.youtubeTrailer %>" placeholder=" ">
+          <input type="text" class="formInput textInput" name="ytTrailer" id="ytTrailer" value="<%= game.youtubeTrailer %>" placeholder=" ">
           <label for="ytTrailer" class="disable-select">Youtube trailer link:</label>
         </div>
         <div class="formItem">
-          <input type="text" class="formInput" name="info" id="info" value="<%= game.info %>" placeholder=" ">
+          <input type="text" class="formInput textInput" name="info" id="info" value="<%= game.info %>" placeholder=" ">
           <label for="info" class="disable-select">Info:</label>
         </div>
         <div class="formItem">

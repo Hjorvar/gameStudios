@@ -18,3 +18,11 @@
 .disable-select {
     user-select: none; /* All modern browsers */
 }
+
+@media screen and (max-width: 900px){
+    .mHide,
+    .mHide * { /* --This class hides items on small display */
+        display: none;
+        pointer-events: none;
+    }
+}
