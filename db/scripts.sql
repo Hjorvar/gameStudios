@@ -156,6 +156,7 @@ SELECT id, name, COUNT(*) AS games FROM publishers INNER JOIN gamePublishers ON 
 
 ALTER TABLE games ADD COLUMN thumbnail NOT NULL DEFAULT 'NONE';
 
-ALTER TABLE games ADD COLUMN background NOT NULL DEFAULT 'NONE';
+ALTER TABLE games ADD COLUMN mobileBackground NOT NULL DEFAULT 'NONE';
 
-UPDATE games SET background = "doomBackground.jpg" WHERE id = 24;
+UPDATE games SET background = "gears5Background.jpg" WHERE id = 11;
+UPDATE games SET mobileBackground = "doomMobile.jpg" WHERE id = 24;
