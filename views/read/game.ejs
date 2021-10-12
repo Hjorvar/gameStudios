@@ -7,6 +7,9 @@
   <title><%= game.name %></title>
   <% let rootpath = "../"; %>
   <%- include(rootpath + 'include/stylesheets') %>
+  <% if(game.background != 'NONE'){ %>
+    <style>body{ background-image: url('/images/backgrounds/<%=game.background%>'); background-size:100% 100%; }</style>
+  <% } %> 
 </head>
 <body>
   <%- include(rootpath + 'include/navbar') %>
