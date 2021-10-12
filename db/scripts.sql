@@ -158,5 +158,5 @@ ALTER TABLE games ADD COLUMN thumbnail NOT NULL DEFAULT 'NONE';
 
 ALTER TABLE games ADD COLUMN mobileBackground NOT NULL DEFAULT 'NONE';
 
-UPDATE games SET background = "gears5Background.jpg" WHERE id = 11;
-UPDATE games SET mobileBackground = "doomMobile.jpg" WHERE id = 24;
+UPDATE games SET background = "battlefield2042Background.jpg" WHERE id = 18;
+UPDATE games SET mobileBackground = "battlefield2042Mobile.jpg" WHERE id = 18;
