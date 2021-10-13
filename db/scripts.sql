@@ -157,8 +157,14 @@ SELECT id, name, COUNT(*) AS games FROM publishers INNER JOIN gamePublishers ON 
 ALTER TABLE games ADD COLUMN thumbnail NOT NULL DEFAULT 'NONE';
 
 ALTER TABLE games ADD COLUMN mobileBackground NOT NULL DEFAULT 'NONE';
+ALTER TABLE games ADD COLUMN opinCritic NOT NULL DEFAULT 'NONE';
+
+ALTER TABLE games
+RENAME COLUMN opinCritic TO openCritic;
 
 UPDATE games SET background = "haloInfiniteBackground.jpg" WHERE id = 2;
 UPDATE games SET mobileBackground = "haloInfiniteMobile.jpg" WHERE id = 2;
 
 SELECT * FROM games WHERE background = 'NONE';
+
+UPDATE games SET openCritic = '<iframe src="https://opencritic.com/game/1572/score?theme=light" frameborder="0" height="102"></iframe>' WHERE id = 24;
