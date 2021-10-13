@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  updateGame(dbFile, req.body.idGame, req.body.gameName,req.body.info ,req.body.ytTrailer ,req.body.year, req.body.month, req.body.studios);
+  updateGame(dbFile, req.body.idGame, req.body.gameName,req.body.info ,req.body.ytTrailer ,req.body.year, req.body.month, req.body.studios, req.body.opencritic);
   updateGamePublisher(dbFile, req.body.idGame, req.body.publishers)
   deleteGameGenre(dbFile, req.body.idGame);
   deleteGamePlatforms(dbFile, req.body.idGame)

@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   if (req.session.loggedin) {
-    const idGame = createGame(dbFile, req.body.gameName,req.body.studios, req.body.info, req.body.ytTrailer, req.body.year, req.body.month );
+    const idGame = createGame(dbFile, req.body.gameName,req.body.studios, req.body.info, req.body.ytTrailer, req.body.year, req.body.month, req.body.opencritic );
     createGamePublishers(dbFile, idGame, req.body.publishers);
     
     const genresPicked = req.body.genres;

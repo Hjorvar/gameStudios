@@ -34,6 +34,10 @@
           <label for="info" class="disable-select">Info:</label>
         </div>
         <div class="formItem">
+          <input type="text" class="formInput textInput" name="opencritic" id="opencritic" placeholder=" ">
+          <label for="opencritic" class="disable-select">Open Critic:</label>
+        </div>
+        <div class="formItem">
           <select name="studios">
             <% for (let i = 0; i < studios.length; i += 1){ %>
               <option value="<%= studios[i].id %>"><%= studios[i].name %></option>
@@ -81,6 +85,10 @@
         <div class="formItem">
           <input type="text" class="formInput textInput" name="info" id="info" value="<%= game.info %>" placeholder=" ">
           <label for="info" class="disable-select">Info:</label>
+        </div>
+        <div class="formItem">
+          <input type="text" class="formInput textInput" name="opencritic" id="opencritic" value="<%= game.openCritic %>" placeholder=" ">
+          <label for="opencritic" class="disable-select">Open Critic:</label>
         </div>
         <div class="formItem">
           <select name="studios">
