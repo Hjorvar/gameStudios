@@ -3,7 +3,7 @@
 		<thead class="sticky">
 			<tr>
 				<th>Name</th>
-				<th>Studio</th>
+				<th class="mHide">Studio</th>
 				<th class="mHide">Genre</th>
 				<% if(username != 'none') { %>
 					<th class="whiteout cur_default">Update</th>
@@ -14,7 +14,7 @@
 		<% for (let i = 0; i < games.length; i += 1){ %>
 			<tr onclick="window.location='/game?idGame=<%= games[i].id %>';">
 				<td><%= games[i].name %></td>
-				<td><%= games[i].studioName %> </td>
+				<td class="mHide"><%= games[i].studioName %> </td>
 				<td class="mHide"><%= games[i].genresName %> </td>
 				<% if(username != 'none') { %>
 					<td class="buttonContainer">
