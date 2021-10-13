@@ -158,7 +158,7 @@ ALTER TABLE games ADD COLUMN thumbnail NOT NULL DEFAULT 'NONE';
 
 ALTER TABLE games ADD COLUMN mobileBackground NOT NULL DEFAULT 'NONE';
 
-UPDATE games SET background = "gearsOfWar4Background.jpg" WHERE id = 23;
-UPDATE games SET mobileBackground = "gearsOfWar4Mobile.jpg" WHERE id = 23;
+UPDATE games SET background = "stateOfDecay2Background.jpg" WHERE id = 26;
+UPDATE games SET mobileBackground = "stateOfDecay2Mobile.jpg" WHERE id = 26;
 
 SELECT * FROM games WHERE background <> 'NONE';
