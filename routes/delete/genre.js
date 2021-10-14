@@ -6,11 +6,11 @@ const router = express.Router();
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  res.render('createUpdate/genres', { title: 'Delete', action: 'delete' });
+  res.redirect('/');
 });
 
 router.post('/', (req, res) => {
-  res.json(req.body);
+  res.redirect('/');
 });
 
 module.exports = router;
