@@ -29,11 +29,11 @@
           <% if(username != 'none') { %>
             <td class="buttonContainer">
               <form action="/updateStudio" method="GET"><button type="submit" class="customBtn">Update</button>
-              <input type="hidden" name="idStudio" id="idStudio" value="<%= publishers[i].id %>"></form>
+              <input type="hidden" name="idPublisher" id="idPublisher" value="<%= publishers[i].id %>"></form>
             </td>
             <td class="buttonContainer">
-              <form action="/ds" method="POST"><button type="submit" class="customBtn">Delete</button>
-              <input type="hidden" name="idStudio" id="idStudio" value="<%= publishers[i].id %>"></form>
+              <form action="/deletePublisher" method="POST"><button type="submit" class="customBtn">Delete</button>
+              <input type="hidden" name="idPublisher" id="idPublisher" value="<%= publishers[i].id %>"></form>
             </td>
           <% } %>
         </tr> 

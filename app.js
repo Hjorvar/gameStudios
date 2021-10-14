@@ -15,6 +15,7 @@ const updateStudio = require('./routes/update/studio');
 
 const deleteGame = require('./routes/delete/game');
 const deleteGenre = require('./routes/delete/genre');
+const deletePublisher = require('./routes/delete/publisher');
 const ds = require('./routes/delete/studio');
 
 const login = require('./routes/login');
@@ -53,6 +54,7 @@ app.use('/createStudio', createStudio);
 
 app.use('/deleteGame', deleteGame);
 app.use('/deleteGenre', deleteGenre);
+app.use('/deletePublisher', deletePublisher);
 app.use('/ds', ds);
 
 app.use('/updateGame', updateGame);
