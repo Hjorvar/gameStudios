@@ -9,17 +9,17 @@ const router = express.Router();
 
 // get index page
 router.get('/', (req, res) => {
-  const currentDate = new Date;
+  const currentDate = new Date();
   let where = 'WHERE month IN (?, ?) AND year = ?';
-  let search = []
-  const orderBy = "games.year, games.month, games.name ASC";
-  let username = isLoggedin(req.session);
+  const search = [];
+  const orderBy = 'games.year, games.month, games.name ASC';
+  const username = isLoggedin(req.session);
   search.push(currentDate.getMonth() + 1);
-  if (currentDate.getMonth() + 1 == 12) {
+  if (currentDate.getMonth() + 1 === 12) {
     // So the next month isn't 13
     // Note: getMonth starts on 0
     where += ' OR year = ?';
-    search.push(1);  // Push January
+    search.push(1); // Push January
     search.push(currentDate.getFullYear());
     search.push(currentDate.getFullYear() + 1);
   } else {
