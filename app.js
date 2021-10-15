@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 require('colors');
-const frontPage = require('./routes/');
+const frontPage = require('./routes');
 
 const createGame = require('./routes/create/game');
 const createGenre = require('./routes/create/genre');
@@ -40,9 +40,9 @@ app.set('view engine', 'ejs');
 
 // session
 app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true,
 }));
 
 // routers
@@ -68,8 +68,6 @@ app.use('/game', readGame);
 app.use('/games', readGames);
 app.use('/studios', readStudios);
 app.use('/publishers', readPublishers);
-
-
 
 // errors : page not found
 app.use((req, res, next) => {

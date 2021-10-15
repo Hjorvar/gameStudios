@@ -5,8 +5,5 @@ module.exports = function findGamePlatforms(dbFile, idGame) {
   const stmt = db.prepare('SELECT idPlatform FROM gamePlatforms WHERE idGame = ?');
   const gamePlatforms = stmt.all(idGame);
   db.close();
-  return gamePlatforms
-}
-
-
-
+  return gamePlatforms;
+};

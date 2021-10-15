@@ -5,5 +5,5 @@ module.exports = function readPlatforms(dbFile) {
   const stmt = db.prepare('SELECT id, name FROM platforms ORDER BY name');
   const platforms = stmt.all();
   db.close();
-  return platforms
-}
+  return platforms;
+};

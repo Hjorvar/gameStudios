@@ -5,8 +5,5 @@ module.exports = function readStudios(dbFile, idStudio) {
   const stmt = db.prepare('SELECT * FROM studios WHERE id = ?');
   const studios = stmt.get(idStudio);
   db.close();
-  return studios
-}
-
-
-
+  return studios;
+};

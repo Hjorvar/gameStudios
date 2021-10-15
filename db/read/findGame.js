@@ -5,8 +5,5 @@ module.exports = function findGame(dbFile, idGame) {
   const stmt = db.prepare('SELECT * FROM games INNER JOIN gamePublishers ON games.id = gamePublishers.idGame WHERE games.id = ?');
   const games = stmt.get(idGame);
   db.close();
-  return games
-}
-
-
-
+  return games;
+};

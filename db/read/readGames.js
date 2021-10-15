@@ -16,5 +16,5 @@ module.exports = function readGames(dbFile, where, search, orderBy) {
     ORDER BY ${orderBy};`);
   const games = stmt.all(search);
   db.close();
-  return games
-}
+  return games;
+};

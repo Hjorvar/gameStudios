@@ -5,8 +5,5 @@ module.exports = function readPublishers(dbFile) {
   const stmt = db.prepare('SELECT id, name, COUNT(*) AS games FROM publishers INNER JOIN gamePublishers ON publishers.id = gamePublishers.idPublisher GROUP BY publishers.id ORDER BY name;');
   const publishers = stmt.all();
   db.close();
-  return publishers
-}
-
-
-
+  return publishers;
+};

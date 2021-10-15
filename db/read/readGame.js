@@ -14,8 +14,5 @@ module.exports = function readStudios(dbFile, idGame) {
   WHERE games.id = ? GROUP BY games.id ORDER BY games.name;`);
   const game = stmt.get(idGame);
   db.close();
-  return game
-}
-
-
-
+  return game;
+};

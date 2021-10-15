@@ -17,8 +17,5 @@ module.exports = function readStudios(dbFile, where, search) {
   `);
   const studios = stmt.all(search);
   db.close();
-  return studios
-}
-
-
-
+  return studios;
+};

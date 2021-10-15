@@ -5,5 +5,5 @@ module.exports = function readGenres(dbFile) {
   const stmt = db.prepare('SELECT id, name FROM genres ORDER BY name');
   const genres = stmt.all();
   db.close();
-  return genres
-}
+  return genres;
+};
