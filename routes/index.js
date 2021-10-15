@@ -3,6 +3,7 @@ const path = require('path');
 const readGames = require('../db/read/readGames');
 
 const dbFile = path.join(__dirname, '../db/gameStudios.db');
+const isLoggedin = require('../functions/isLoggedin');
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
   let where = 'WHERE month IN (?, ?) AND year = ?';
   let search = []
   const orderBy = "games.year, games.month, games.name ASC";
-  let username = 'none';
+  let username = isLoggedin(req.session);
   search.push(currentDate.getMonth() + 1);
   if (currentDate.getMonth() + 1 == 12) {
     // So the next month isn't 13
@@ -26,9 +27,6 @@ router.get('/', (req, res) => {
     search.push(currentDate.getFullYear());
   }
   const games = readGames(dbFile, where, search, orderBy);
-  if (req.session.loggedin) {
-    username = req.session.username;
-	}
   res.render('index', { title: 'Front page', username, games });
 });
 

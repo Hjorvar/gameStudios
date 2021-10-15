@@ -5,15 +5,13 @@ const readGames = require('../../db/read/readGames');
 const readPlatforms = require('../../db/read/readPlatforms');
 
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
+const isLoggedin = require('../../functions/isLoggedin');
 
 const router = express.Router();
 
 // get index page
 router.get('/', (req, res) => {
-  let username = 'none';
-  if (req.session.loggedin) {
-    username = req.session.username;
-	}
+  let username = isLoggedin(req.session);
 
   let where = 'WHERE 1 = 1';
   let search = [];

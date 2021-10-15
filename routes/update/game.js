@@ -14,13 +14,15 @@ const readPublishers = require('../../db/read/readPublishers');
 const updateGame = require('../../db/update/updateGame');
 const updateGamePublisher = require('../../db/update/updateGamePublisher');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
+const isLoggedin = require('../../functions/isLoggedin');
 
 const router = express.Router();
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-  if (req.session.loggedin) {
-    // skýta mix, laga betur seinna
+  let username = isLoggedin(req.session);
+  if (username != 'none') {
+    // skíta mix, laga betur seinna
     const where = 'WHERE 1 = 1';
     const search = []; 
     const genres = readGenres(dbFile);
@@ -30,7 +32,7 @@ router.get('/', (req, res) => {
     const game = findGame(dbFile, req.query.idGame);
     const gameGenres = findGameGenre(dbFile, req.query.idGame);
     const gamePlatforms = findGamePlatforms(dbFile, req.query.idGame);
-    res.render('createUpdate/game', { title: `Update ${game.name}`, action: 'Update', game, genres, studios, platforms, publishers, gameGenres, gamePlatforms });
+    res.render('createUpdate/game', { title: `Update ${game.name}`, action: 'Update', game, genres, studios, platforms, publishers, gameGenres, gamePlatforms, username });
   } else {
     res.redirect(301, '/' );
 	}
