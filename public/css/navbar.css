@@ -1,5 +1,5 @@
 #navbar {
-    display: block;
+    display: grid;
     align-items: center;
     background-color: var(--clr_main);/*rgb(59, 73, 102);*/
     box-shadow: 
@@ -7,10 +7,13 @@
         0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.3);
     margin-bottom: 1rem;
     z-index: 10;
+    grid-template-columns: 1fr 1fr minmax(1fr, 10rem);
+    grid-template-areas: "logo buttons login";
 }
 
 #navbar > ul {
-    display: block;
+    grid-area: buttons;
+    display: inline-block;
     margin: 0 auto;
     text-align: center;
     padding: 0;
@@ -52,4 +55,23 @@ li.item {
 }
 .select:not(:hover) > .focus {
     display: none;
+}
+
+#navbar > .loginForm{
+    grid-area: login;
+    padding: .25rem;
+    position: relative;
+    justify-self: end;
+    justify-items: center;
+}
+
+#navbar > .loginForm form, #navbar > .loginForm form input{
+    max-width: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+}
+#navbar > .loginForm form input[type="submit"] {
+    padding: .25rem;
+    margin: .25rem auto;
 }

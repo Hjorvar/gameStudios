@@ -9,6 +9,7 @@ const readStudios = require('../../db/read/readStudios');
 const readPlatforms = require('../../db/read/readPlatforms');
 const readPublishers = require('../../db/read/readPublishers');
 const dbFile = path.join(__dirname, '../../db/gameStudios.db');
+const isLoggedin = require('../../functions/isLoggedin');
 
 const router = express.Router();
 
@@ -16,8 +17,8 @@ const router = express.Router();
 
 // get studioTemplate page
 router.get('/', (req, res) => {
-
-  if (req.session.loggedin) {
+  let username = isLoggedin(req.session);
+  if (username != 'none') {
     // skýta mix, laga betur seinna
     const where = 'WHERE 1 = 1';
     const search = []; 
@@ -26,14 +27,15 @@ router.get('/', (req, res) => {
     const studios = readStudios(dbFile, where, search);
     const platforms = readPlatforms(dbFile); 
     const publishers = readPublishers(dbFile);
-    res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers });
+    res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers, username });
   } else {
     res.redirect(301, '/' );
 	}
 });
 
 router.post('/', (req, res) => {
-  if (req.session.loggedin) {
+  let username = isLoggedin(req.session);
+  if (username != 'none') {
     const idGame = createGame(dbFile, req.body.gameName,req.body.studios, req.body.info, req.body.ytTrailer, req.body.year, req.body.month, req.body.opencritic );
     createGamePublishers(dbFile, idGame, req.body.publishers);
     
@@ -63,7 +65,7 @@ router.post('/', (req, res) => {
     const studios = readStudios(dbFile, where, search);
     const platforms = readPlatforms(dbFile); 
     const publishers = readPublishers(dbFile);
-    res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers });  } else {
+    res.render('createUpdate/game', { title: 'Create Game', action: 'create', studios, genres, platforms, publishers , username});  } else {
     res.redirect(301, '/' );
   }
 });

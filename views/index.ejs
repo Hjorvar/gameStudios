@@ -10,17 +10,6 @@
 </head>
 <body>
 	<%- include('include/navbar') %>
-  <% if(username == 'none') { %>
-    <form action="/login" method="POST">
-      <input type="text" name="user" id="user">
-      <input type="password" name="password" id="password">
-      <button type="submit">Login</button>
-    </form>
- <% } else { %>
-    <form action="/logout" method="POST">
-      <button type="submit">Logout</button>
-    </form>
-  <% } %>
   <%- include('include/gameTable') %> 
 </body>
 </html>
