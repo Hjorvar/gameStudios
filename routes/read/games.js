@@ -77,6 +77,9 @@ router.get('/', (req, res) => {
   const genres = readGenres(dbFile);
   const games = readGames(dbFile, where, search, orderBy);
   const platforms = readPlatforms(dbFile);
+  for (let i = 0; i < games.length; i += 1) {
+    games[i].genresName = games[i].genresName.split(',').join(', ');
+  }
   res.render('read/games', {
     title: 'Games', games, genres, username, platforms,
   });
