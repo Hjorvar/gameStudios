@@ -1,11 +1,13 @@
-<% if(username == 'none') { %>
+<% try { %> 
+  <% if(username == 'none') { %>
     <form action="/login" method="POST">
       <input type="text" name="user" id="user">
       <input type="password" name="password" id="password">
       <input type="submit" value="Login" class="customBtn"></input>
     </form>
- <% } else { %>
+  <% } else { %>
     <form action="/logout" method="POST">
       <input type="submit" value="Logout" class="customBtn"></input>
     </form>
   <% } %>
+<% } catch (e) {} %> 

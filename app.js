@@ -70,16 +70,15 @@ app.use('/studios', readStudios);
 app.use('/publishers', readPublishers);
 
 // errors : page not found
-app.use((req, res, next) => {
-  const err = new Error('Page not found');
-  err.status = 404;
-  next(err);
+app.use((req, res) => {
+  res.status(404);
+  res.render('error', { title: 'Error', status: 404, msg: 'Síða fannst ekki!' });
 });
 
 // handling errors
 app.use((err, req, res) => {
   res.status(err.status || 500);
-  res.send(err.message);
+  res.render('error', { title: 'Error', status: res.status || 500, msg: 'Villa kom upp!' });
 });
 
 // setting up the server
