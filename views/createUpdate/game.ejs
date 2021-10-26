@@ -38,6 +38,10 @@
           <label for="opencritic" class="disable-select">Open Critic:</label>
         </div>
         <div class="formItem">
+          <input type="file" class="formInput textInput" name="background" id="background" placeholder=" ">
+          <label for="background" class="disable-select">Background:</label>
+        </div>
+        <div class="formItem">
           <select name="studios">
             <% for (let i = 0; i < studios.length; i += 1){ %>
               <option value="<%= studios[i].id %>"><%= studios[i].name %></option>
