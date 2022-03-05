@@ -171,3 +171,5 @@ UPDATE games SET mobileBackground = "haloInfiniteMobile.jpg" WHERE id = 2;
 SELECT * FROM games WHERE background = 'NONE';
 
 UPDATE games SET openCritic = '<iframe src="https://opencritic.com/game/1572/score?theme=light" frameborder="0" height="102"></iframe>' WHERE id = 24;
+
+SELECT * FROM publishers;
