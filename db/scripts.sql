@@ -109,6 +109,9 @@ CREATE TABLE users (
 INSERT INTO users (username, password)
 VALUES ('Hjorvar', 'kennari'), ('Ingvar', 'oli'), ('Brynjar', 'yngstur') ;
 
+INSERT INTO users (username, password)
+VALUES ('Bjarni', 'gamli');
+
 SELECT username FROM users WHERE username = 'Hjorvar' AND password = 'kennari';
 
 DELETE FROM games WHERE id = 11;
