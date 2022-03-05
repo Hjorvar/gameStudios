@@ -61,7 +61,7 @@ DROP TABLE studios;
 SELECT * FROM studios;
 
 INSERT INTO publishers (name)
-VALUES ('GameMill Entertainment');
+VALUES ('Bandai Namco');
 
 INSERT INTO gamePublishers
 VALUES (10,1);
