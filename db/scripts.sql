@@ -173,3 +173,7 @@ SELECT * FROM games WHERE background = 'NONE';
 UPDATE games SET openCritic = '<iframe src="https://opencritic.com/game/1572/score?theme=light" frameborder="0" height="102"></iframe>' WHERE id = 24;
 
 SELECT * FROM publishers;
+
+SELECT id, name, COUNT(*) AS games FROM publishers INNER JOIN gamePublishers ON publishers.id = gamePublishers.idPublisher GROUP BY publishers.id ORDER BY name;
+
+SELECT id, name, COUNT(*) AS games FROM publishers LEFT OUTER JOIN gamePublishers ON publishers.id = gamePublishers.idPublisher GROUP BY publishers.id ORDER BY name;
